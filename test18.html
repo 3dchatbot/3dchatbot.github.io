@@ -74,7 +74,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://api.wit.ai/message?v=20230218&q=hello");
+xhr.open("GET", "https://api.wit.ai/message?v=20230218&q=hello");
 xhr.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
 xhr.setRequestHeader("Access-Control-Allow-Origin", "https://api.wit.ai");
 xhr.setRequestHeader("cache-control", "no-cache");
@@ -89,7 +89,7 @@ function loadDoc() {
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "https://api.wit.ai/message?v=20230218&q=hello", true);
+  xhttp.open("GET", "https://api.wit.ai/message?v=20230218&q=hello", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://api.wit.ai");
   xhttp.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
