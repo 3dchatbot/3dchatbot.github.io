@@ -22,6 +22,7 @@
                xhr.open("POST", "https://api.wit.ai/message?v=20230218&q=hello", true);
                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                xhr.setRequestHeader("Authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
+               xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
                // Need to escape value because it has an equals sign
                xhr.send("txtTest=" + escape(document.getElementById("txtTest").value));
            }
