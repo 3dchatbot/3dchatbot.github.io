@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        <form id='test-form'>
+            Input1: <input name='input1'><br>
+            Input2: <input name='input2'><br>
+            <input type='submit'>
+          </form>
+          <script>
+            var testForm = document.getElementById('test-form');
+            testForm.onsubmit = function(event) {
+              event.preventDefault();
+          
+              var request = new XMLHttpRequest();
+              // POST to httpbin which returns the POST data as JSON
+              request.open('get', 'https://api.wit.ai/message?v=20230218&q=hello');
+              request.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
+                  request.setRequestHeader("cache-control", "no-cache");
+                  request.setRequestHeader("postman-token", "94421563-10f9-ea6f-c053-cb184cb537eb");
+          
+              var formData = new FormData(document.getElementById('test-form'));
+              request.send(formData);
+          
+              console.log(request.response);
+            }
+          </script>
+    </body>
+</html>
