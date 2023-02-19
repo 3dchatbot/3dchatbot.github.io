@@ -13,10 +13,13 @@
           
               var request = new XMLHttpRequest();
               // POST to httpbin which returns the POST data as JSON
-              request.open('get', 'https://api.wit.ai/message?v=20230218&q=hello');
-              request.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
+              request.open('GET', 'https://api.wit.ai/message?v=20230218&q=hello');
+              request.setRequestHeader("Authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
                   request.setRequestHeader("cache-control", "no-cache");
                   request.setRequestHeader("postman-token", "94421563-10f9-ea6f-c053-cb184cb537eb");
+                  request.setRequestHeader('Access-Control-Allow-Origin: *');
+                  request.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
+                  request.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization, X-Request-With');
           
               var formData = new FormData(document.getElementById('test-form'));
               request.send(formData);
