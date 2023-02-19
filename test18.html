@@ -50,6 +50,8 @@ xhr.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4")
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.setRequestHeader("Access-Control-Allow-Origin", "https://api.wit.ai");
 xhr.setRequestHeader("postman-token", "ac958356-ad43-3263-be9d-39ca7826ec76");
+xhr.setRequestHeader("Access-Control-Allow-Headers", "access-control-allow-origin, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+
 
 xhr.send(data);
             });
@@ -79,6 +81,7 @@ xhr.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4")
 xhr.setRequestHeader("Access-Control-Allow-Origin", "https://api.wit.ai");
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.setRequestHeader("postman-token", "e91f3892-5075-fb6b-0215-01d8150afef5");
+xhr.setRequestHeader("Access-Control-Allow-Headers", "access-control-allow-origin, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 
 xhr.send(data);
 }
@@ -95,7 +98,7 @@ function loadDoc() {
   xhttp.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
   xhttp.setRequestHeader("Access-Control-Allow-Credentials", "true");
   xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  xhttp.setRequestHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+  xhttp.setRequestHeader("Access-Control-Allow-Headers", "access-control-allow-origin, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
   xhttp.send("fname=Henry&lname=Ford");
 }
 </script>
