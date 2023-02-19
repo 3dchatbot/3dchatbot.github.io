@@ -12,14 +12,23 @@
  
 <script>
 function loadDoc() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-    document.getElementById("demo").innerHTML = this.responseText;
-  }
-  xhttp.open("post", "https://api.wit.ai/message?v=20230218&q=hello");
-xhttp.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
-xhttp.setRequestHeader("cache-control", "no-cache");
-xhttp.setRequestHeader("postman-token", "94421563-10f9-ea6f-c053-cb184cb537eb");
+    var data = null;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+	
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	    console.log(this.responseText);
+	  }
+	});
+	
+	xhr.open("GET", "https://api.wit.ai/message?v=20230218&q=hello");
+	xhr.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
+	xhr.setRequestHeader("cache-control", "no-cache");
+	xhr.setRequestHeader("postman-token", "94421563-10f9-ea6f-c053-cb184cb537eb");
+	
+	xhr.send(data);
 }
 </script>
 
