@@ -23,6 +23,10 @@
                xhr.setRequestHeader("Content-Type", "application/json");
                xhr.setRequestHeader("Authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
                xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+               xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
+  xhr.setRequestHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  xhr.setRequestHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+  
                // Need to escape value because it has an equals sign
                xhr.send("txtTest=" + escape(document.getElementById("txtTest").value));
            }
