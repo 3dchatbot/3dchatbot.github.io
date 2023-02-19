@@ -21,8 +21,8 @@
                   request.setRequestHeader('Access-Control-Allow-Credentials', 'true');
 
                   request.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-                  request.setRequestHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Methods, preflightcontinue, Origin, Content-Type, Accept, Authorization, X-Request-With');
-                  request.setRequestHeader('preflightContinue', false);
+                  request.setRequestHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Methods, preflightContinue, Origin, Content-Type, Accept, Authorization, X-Request-With');
+                  request.setRequestHeader('preflightContinue', 'false');
           
               var formData = new FormData(document.getElementById('test-form'));
               request.send();
