@@ -19,10 +19,10 @@
                   request.setRequestHeader("postman-token", "94421563-10f9-ea6f-c053-cb184cb537eb");
                   request.setRequestHeader('Access-Control-Allow-Origin', '*');
                   request.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-
+                  request.setRequestHeader('Access-Control-Max-Age', '86400');
                   request.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
                   request.setRequestHeader('Access-Control-Allow-Headers', 'Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since');
-                  request.setRequestHeader('preflightContinue', 'false');
+                  request.setRequestHeader('preflightContinue', false);
           
               var formData = new FormData(document.getElementById('test-form'));
               request.send(formData);
