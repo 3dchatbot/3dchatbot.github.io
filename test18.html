@@ -76,6 +76,7 @@ xhr.addEventListener("readystatechange", function () {
 
 xhr.open("POST", "https://api.wit.ai/message?v=20230218&q=hello");
 xhr.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
+xhr.setRequestHeader("Access-Control-Allow-Origin", "https://api.wit.ai");
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.setRequestHeader("postman-token", "e91f3892-5075-fb6b-0215-01d8150afef5");
 
@@ -90,7 +91,7 @@ function loadDoc() {
   };
   xhttp.open("POST", "https://api.wit.ai/message?v=20230218&q=hello", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhttp.setRequestHeader("Access-Control-Allow-Origin", "https://api.wit.ai");
   xhttp.setRequestHeader("authorization", "Bearer OQ3VFYQJNEXNAQVNZ2UOTOU4TMVOITL4");
   xhttp.setRequestHeader("Access-Control-Allow-Credentials", "true");
   xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
