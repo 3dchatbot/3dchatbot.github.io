@@ -21,8 +21,8 @@
                   request.setRequestHeader('Access-Control-Allow-Credentials', 'true');
                   request.setRequestHeader('Access-Control-Max-Age', '86400');
                   request.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-                  request.setRequestHeader('Access-Control-Allow-Headers', 'Age,Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since');
                   request.setRequestHeader('preflightContinue', false);
+                  request.setRequestHeader('Access-Control-Allow-Headers', 'preflightContinue,Age,Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since');
           
               var formData = new FormData(document.getElementById('test-form'));
               request.send(formData);
