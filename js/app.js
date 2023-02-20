@@ -157,6 +157,7 @@ function createDownloadLink(blob) {
 		  var fd=new FormData();
 		  fd.append("audio_data",blob, filename);
 		  xhr.open("POST","https://pythonstt.onrender.com/read4",true);
+		  xhr.setRequestHeader('Access-Control-Allow-Origin','*');
 		  xhr.send(fd);
 	})
 	li.appendChild(document.createTextNode (" "))//add a space in between
