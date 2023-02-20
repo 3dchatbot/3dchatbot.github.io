@@ -157,9 +157,11 @@ function createDownloadLink(blob) {
 		  var fd=new FormData();
 		  fd.append("audio_data",blob, filename);
 		  xhr.open("POST","https://pythonstt.onrender.com/read4",true);
-		  xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-		  xhr.setRequestHeader("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
-		  xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+		  xhr.setRequestHeader('Access-Control-Allow-Origin: *');
+		  xhr.setRequestHeader("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
+		  xhr.setRequestHeader("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+		  xhr.setRequestHeader('Access-Control-Allow-Credentials: true');
+		  xhr.setRequestHeader('Access-Control-Max-Age: 240');
 		  xhr.send(fd);
 	})
 	li.appendChild(document.createTextNode (" "))//add a space in between
