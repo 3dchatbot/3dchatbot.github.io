@@ -155,7 +155,7 @@ function createDownloadLink(blob) {
 		      }
 		  };
 		  var fd=new FormData();
-		  fd.append("audio_data",blob, filename);
+		  fd.append("file",blob, filename);
 		  xhr.open("POST","https://pythonstt.onrender.com/read4",true);
 		  xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 		  xhr.setRequestHeader("Access-Control-Allow-Methods","PUT, GET, POST, DELETE, OPTIONS");
