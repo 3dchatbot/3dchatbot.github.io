@@ -159,7 +159,7 @@ function createDownloadLink(blob) {
 		  xhr.open("POST","https://pythonstt.onrender.com/read4",true);
 		  xhr.setRequestHeader('Access-Control-Allow-Origin: *');
 		  xhr.setRequestHeader("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
-		  xhr.setRequestHeader("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+		  xhr.setRequestHeader("Access-Control-Allow-Headers: Special-Request-Header, Origin, X-Requested-With, Content-Type, Accept, Authorization");
 		  xhr.setRequestHeader('Access-Control-Allow-Credentials: true');
 		  xhr.setRequestHeader('Access-Control-Max-Age: 240');
 		  xhr.send(fd);
