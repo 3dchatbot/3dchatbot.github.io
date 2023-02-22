@@ -147,6 +147,22 @@ function createDownloadLink(blob) {
 	var upload = document.createElement('a');
 	upload.href="#";
 	upload.innerHTML = "Upload";
+	var xhr=new XMLHttpRequest();
+	xhr.onload=function(e) {
+		if(this.readyState === 4) {
+			console.log("Server returned: ",e.target.responseText);
+		}
+	};
+	var fd=new FormData();
+	fd.append("file",blob, filename);
+	xhr.open("POST","https://pythonstt.onrender.com/read4",true);
+	xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+	xhr.setRequestHeader("Access-Control-Allow-Methods","PUT, GET, POST, DELETE, OPTIONS");
+	xhr.setRequestHeader("Access-Control-Allow-Headers","Special-Request-Header, Origin, X-Requested-With, Content-Type, Accept, Authorization");
+	xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+	xhr.setRequestHeader('Access-Control-Max-Age', '240');
+	xhr.send(fd);
+
 	upload.addEventListener("click", function(event){
 		  var xhr=new XMLHttpRequest();
 		  xhr.onload=function(e) {
