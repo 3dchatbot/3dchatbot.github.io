@@ -1,5 +1,5 @@
 @import"https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap";
-body{background:#000;
+body{/*background:#000;*/
     color:#fff;cursor:default;
     font-family:"Roboto Mono",monospace;
     line-height:normal;margin:0;position:relative}
@@ -36,4 +36,5 @@ body{background:#000;
         .elsewhere a{pointer-events:auto;text-decoration:none;transition:color .3s ease}
         .elsewhere a:focus,.elsewhere a:hover{color:gray}
         @media print{.elsewhere{display:none !important}}
-        .webgl-scene{bottom:0;height:100%;left:0;position:fixed;right:0;top:0;width:100%}@media print{.webgl-scene{display:none !important}}
+        .webgl-scene{bottom:0;height:100%;left:0;position:fixed;right:0;top:0;width:50%}
+        @media print{.webgl-scene{display:none !important}}
