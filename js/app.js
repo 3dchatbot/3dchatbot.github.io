@@ -20,7 +20,8 @@ pauseButton.addEventListener("click", pauseRecording);
 
 function startRecording() {
 	console.log("recordButton clicked");
-
+	document.getElementById("stopButton").removeAttribute("style");
+	document.getElementById('recordButton').style.display = 'none';
 	/*
 		Simple constraints object, for more advanced audio features see
 		https://addpipe.com/blog/audio-constraints-getusermedia/
@@ -96,7 +97,8 @@ function pauseRecording(){
 
 function stopRecording() {
 	console.log("stopButton clicked");
-
+	document.getElementById("recordButton").removeAttribute("style");
+	document.getElementById('stopButton').style.display = 'none';
 	//disable the stop button, enable the record too allow for new recordings
 	stopButton.disabled = true;
 	recordButton.disabled = false;
