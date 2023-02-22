@@ -151,6 +151,9 @@ function createDownloadLink(blob) {
 	xhr.onload=function(e) {
 		if(this.readyState === 4) {
 			console.log("Server returned: ",e.target.responseText);
+			var userMessage = document.querySelector("#userInput").value
+      let userHtml = '<div class="d-flex justify-content-end mb-4">'+'<div class="msg_cotainer_send">'+e.target.responseText+'</div>'+image1+'</div>'
+      document.querySelector('#body').innerHTML+= userHtml;
 		}
 	};
 	var fd=new FormData();
@@ -162,6 +165,10 @@ function createDownloadLink(blob) {
 	xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
 	xhr.setRequestHeader('Access-Control-Max-Age', '240');
 	xhr.send(fd);
+	/*
+e.target.responseText
+	*/
+	
 
 	upload.addEventListener("click", function(event){
 		  var xhr=new XMLHttpRequest();
