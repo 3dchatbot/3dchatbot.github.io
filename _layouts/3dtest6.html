@@ -77,11 +77,11 @@
 		<!--
 		检测支持(canvas，webgl，workers，fileApi)
 		-->
-		<script src="js/Detector.js"></script>
+		<script src="/js/Detector.js"></script>
 		<!--
 		统计插件(FPS，渲染时间，chrome内存使用率)，min表示js代码经过压缩
 		-->
-		<script src="js/libs/stats.min.js"></script>
+		<script src="/js/libs/stats.min.js"></script>
 
 		<script>
 			//如果不支持webgl，则会在当前的父布局上添加一个不支持的提示信息DIV
@@ -136,7 +136,6 @@
 				var light = new THREE.PointLight( 0xff2200 );
 				light.position.set( 1000, 1000, 1000 );
 				scene.add( light );
-				
 
 				/*
 				环境光，这是一种基础光源，它的颜色会添加到整个场景和所有对象的当前颜色上 |
