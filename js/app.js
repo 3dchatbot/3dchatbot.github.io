@@ -97,6 +97,8 @@ function pauseRecording(){
 
 function stopRecording() {
 	console.log("stopButton clicked");
+	//console.log(window.e.head);;
+	console.log(window);
 	document.getElementById("recordButton").removeAttribute("style");
 	document.getElementById('stopButton').style.display = 'none';
 	//disable the stop button, enable the record too allow for new recordings
@@ -169,6 +171,7 @@ function createDownloadLink(blob) {
           document.getElementById("audio1").src = `https://nodetts.onrender.com/?text=${obj.traits.text[0].value}`;
           var y = document.getElementById("myAudio"); 
           y.play(); 
+		  console.log(renderer.render( scene, camera ));
       }
 		}
 	};

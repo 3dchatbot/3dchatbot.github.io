@@ -19,6 +19,7 @@
           document.getElementById("audio1").src = `https://nodetts.onrender.com/?text=${obj.traits.text[0].value}`;
           var y = document.getElementById("myAudio"); 
           y.play(); 
+          console.log(renderer.render( scene, camera ));
       }
     })
     

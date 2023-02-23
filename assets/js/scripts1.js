@@ -22893,6 +22893,8 @@
         function e(n, i, r, a) {
             t(this, e),
             this.canvas = document.createElement("canvas"),
+            this.canvas.setAttribute("id","canvas");
+            this.canvas.id = "canvas1",
             this.canvas.className = "hidden-canvas",
             this.canvas.width = 1024,
             this.canvas.height = 512,
@@ -25021,6 +25023,7 @@
               , f = 30 * o
               , m = document.createElement("canvas");
             m.width = s,
+            m.id = "canvas1",
             m.height = c,
             m.style.cssText = "width:80px;height:48px";
             var v = m.getContext("2d");
@@ -25064,6 +25067,7 @@
             this.queueTwitter = [],
             this.element = document.createElement("div"),
             this.element.className = "webgl-scene",
+            this.element.idName = 'webcanvas';
             e.appendChild(this.element),
             this.camera = new Vt(45,window.innerWidth / window.innerHeight,.1,1e3),
             this.camera.position.set(0, 0, .6),
@@ -25116,6 +25120,7 @@
             this.headGroup = new Ki,
             this.headGroup.scale.set(.7, .7, .7),
             this.scene.add(this.headGroup),
+            
             this.buttons = {
                 ButtonLoading: new Uh(this.headGroup,"ButtonLoading","LOADING...",{
                     x: 0,
@@ -25130,8 +25135,10 @@
             this.head = new Hh("assets/glb/will.glb",this.onHeadLoaded),
             this.enable(),
             this.buttons.ButtonLoading.setLoading(!0),
+             console.log(this.head)
             this.buttons.ButtonLoading.show()
         }
+       
         return i(n, [{
             key: "enable",
             value: function() {
@@ -25425,7 +25432,8 @@
     }()
       , qh = function() {
         try {
-            var e = document.createElement("canvas");
+            var e = document.createElement("canvas",{"id":"canvas1"});
+            
             return !(!window.WebGLRenderingContext || !e.getContext("webgl") && !e.getContext("experimental-webgl"))
         } catch (e) {
             return !1
