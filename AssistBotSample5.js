@@ -16273,8 +16273,7 @@ var SEA3D = {
 };
 SEA3D.Timer.prototype.getDeltaTime = function() {
     return this.getTime() - this.time
-}
-,
+},
 SEA3D.Timer.prototype.getTime = function() {
     return (new Date).getTime()
 }
