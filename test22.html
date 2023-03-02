@@ -31,6 +31,7 @@
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+            import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
 			let camera, scene, renderer;
 
@@ -41,7 +42,7 @@
  // Buttons startButton and resetButton
  var startButton = document.getElementById( 'startButtonId' );
  var resetButton = document.getElementById( 'resetButtonId' );
-
+ var playtrack = document.getElementById( 'playtrack' );
 
 
 				const container = document.createElement( 'div' );
@@ -192,16 +193,34 @@ render();
 				controls.maxDistance = 10;
 				controls.target.set( 0, 0, - 0.2 );
 				controls.update();
+                const controls2 = new TrackballControls(camera, renderer.domElement);
+                controls2.rotateSpeed = 1.0;
+                controls2.zoomSpeed = 4;
+                controls2.panSpeed = 0.8;
+                controls2.noZoom = false;
+                controls2.noPan = false;
+                controls2.staticMoving = true;
+                controls2.dynamicDampingFactor = 0.3
+                controls2.update();
+                // create an AudioListener and add it to the camera
+                
 
-                var controls2 = new TrackballControls(camera, renderer.domElement);
-controls2.rotateSpeed = 1.0;
-controls2.zoomSpeed = 4;
-controls2.panSpeed = 0.8;
-controls2.noZoom = false;
-controls2.noPan = false;
-controls2.staticMoving = true;
-controls2.dynamicDampingFactor = 0.3
-controls2.update(); 
+           
+                playtrack.onclick = function playtrack1() {
+                         // create a global audio source
+                         const listener = new THREE.AudioListener();
+                camera.add( listener );
+                const sound = new THREE.Audio( listener );
+                const audioLoader = new THREE.AudioLoader();
+audioLoader.load( 'http://nodetts.onrender.com/?text=i%20just%20want%20to%20fuck%20you', function( buffer ) {
+    //sound.start(0);
+	sound.setBuffer( buffer );
+	sound.setLoop( false );
+	sound.setVolume( 0.5 );
+	sound.play();
+    
+}); 
+                };
 				window.addEventListener( 'resize', onWindowResize );
 
 			}
@@ -229,5 +248,6 @@ controls2.update();
 		</script>
 <div style="color: black;" id="startButtonId">Open Mouth</div>
 <div style="color: black;" id="resetButtonId">Blink</div>
+<div style="color: black;" id="playtrack">play</div>
 	</body>
 </html>
