@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.104.2">
+<title>EMERSA</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.js"></script>     
+<link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+<style>
+.bd-placeholder-img {
+font-size: 1.125rem;
+text-anchor: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+}
+
+@media (min-width: 768px) {
+.bd-placeholder-img-lg {
+font-size: 3.5rem;
+}
+}
+
+.b-example-divider {
+height: 3rem;
+background-color: rgba(0, 0, 0, .1);
+border: solid rgba(0, 0, 0, .15);
+border-width: 1px 0;
+box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+flex-shrink: 0;
+width: 1.5rem;
+height: 100vh;
+}
+
+.bi {
+vertical-align: -.125em;
+fill: currentColor;
+}
+
+.nav-scroller {
+position: relative;
+z-index: 2;
+height: 2.75rem;
+overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+display: flex;
+flex-wrap: nowrap;
+padding-bottom: 1rem;
+margin-top: -1px;
+overflow-x: auto;
+text-align: center;
+white-space: nowrap;
+-webkit-overflow-scrolling: touch;
+}
+</style>
+<link href="/css/style5.css" rel="stylesheet">
+<link href="/css/style6.css" rel="stylesheet">
+<link href="/css/style7.css" rel="stylesheet">
+<link href="/css/style8.css" rel="stylesheet">
+</head>
+<body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+<script type="importmap">
+{
+"imports": {
+"three": "../build/three.module.js",
+"three/addons/": "./jsm/"
+}
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import Stats from 'three/addons/libs/stats.module.js';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+let container, stats, clock, gui, mixer, actions, activeAction, previousAction;
+let camera, scene, renderer, model, face;
+const api = { state: 'Walking' };
+init();
+render();
+function init() {
+const container = document.getElementById("gpt3headerimage");
+container.setAttribute("id", "Div1");
+renderer = new THREE.WebGLRenderer();
+container.appendChild( renderer.domElement );
+renderer.setSize(container.clientWidth, container.clientHeight);
+camera = new THREE.PerspectiveCamera( 45, container.clientWidth /  container.clientHeight, 0.25, 10 );
+camera.position.set( 0, 0, 10 );
+scene = new THREE.Scene();
+clock = new THREE.Clock();
+new RGBELoader()
+.setPath( 'textures/equirectangular/' )
+.load( 'quarry_01_1k.hdr', function ( texture ) {
+texture.mapping = THREE.EquirectangularReflectionMapping;
+scene.environment = texture;
+const loader = new GLTFLoader().setPath( '/assets/glb/' );
+loader.load( 'will.glb', function ( gltf ) {
+gltf.scene.scale.set( 10.0, 10.0, 10.0 );
+const mesh = gltf.scene.children[ 0 ];
+scene.add( mesh );
+mesh.scale.set(15,15,15);
+const head = mesh.getObjectByName( 'Will' );
+mixer = new THREE.AnimationMixer( head );
+var gui = new dat.GUI();
+const control = {
+OpenMouth: 0,
+Smile: 0
+};
+gui.add(control, 'OpenMouth', 0,1).step(0.01).listen().onChange(function(value){
+head.morphTargetInfluences[0] = value;
+});
+gui.add(control, 'Smile', 0,1).step(0.01).listen().onChange(function(value){
+head.morphTargetInfluences[3] = value;
+});
+gui.close();
+render();
+} );
+} );
+renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
+renderer.setClearColor( 0x000000, 0 );
+renderer.setPixelRatio( window.devicePixelRatio );
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1;
+renderer.outputEncoding = THREE.sRGBEncoding;
+container.appendChild( renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
+controls.addEventListener( 'change', render ); // use if there is no animation loop
+controls.minDistance = 2;
+controls.maxDistance = 10;
+controls.target.set( 0, 0.5, - 0.2 );
+controls.update();
+window.addEventListener( 'resize', onWindowResize );
+}
+render();
+function onWindowResize() {
+let box = document.querySelector('#Div1');
+let width = box.offsetWidth;
+let height = box.offsetHeight;
+camera.aspect = width / height;
+camera.updateProjectionMatrix();
+renderer.setSize(container.clientWidth, container.clientHeight);
+render();
+}
+function animate() {
+requestAnimationFrame(animate);
+controls.update();
+renderScene();
+}
+function render() {
+requestAnimationFrame(render);
+renderer.render( scene, camera );
+}
+</script>
+<div class="gradient__bg">
+<div class="gpt3__navbar">
+<div class="Toastify"></div>
+<div class="gpt3__navbar-links">
+<a aria-current="page" class="active" href="/"> 
+<div class="gpt3__navbar-links_logo">
+<img src="/media/logo.359950db.png" class="logo">
+</div>
+</a>
+<div class="gpt3__navbar-links_container">
+<p><a aria-current="page" class="active" href="/">Home</a></p>
+<p><a href="#wgpt3">Why Emersa?</a></p>
+<p><a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3">
+<p id="bt">Join discord</p></a></p>
+<p><a class="bg-transparent border-0" id="bt" href="/mint">Minty</a></p>
+<p><a href="https://www.keepandshare.com/doc6/38222/akasha-original-white-paper-1-pdf-129k?da=y" target="_blank" rel="noreferrer">White Paper</a></p>
+<p><a href="#team">Team</a></p>
+</div>
+</div>
+<div class="gpt3__navbar-sign">
+<button type="button" class="bg-success">Connected</button>
+<button type="button" class="bg-info ml-2">No Download  Available</button>
+</div>
+<div class="gpt3__navbar-menu">
+<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#fff" height="27" width="27" xmlns="http://www.w3.org/2000/svg" style="color: rgb(255, 255, 255);"><g>
+<path fill="none" d="M0 0h24v24H0z"></path>
+<path d="M3 4h18v2H3V4zm6 7h12v2H9v-2zm-6 7h18v2H3v-2z"></path></g>
+</svg>
+</div>
+<div class="modal fade" id="exampleModalmerchf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-wallet modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<h3 class="modal-title text-white text-center text-uppercase w-100" id="exampleModalLabel"> Wallet</h3>
+<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+<img src="assets/errorSign.svg" alt="">
+</button>
+</div>
+<div class="modal-body p-5 text-center">
+<button class="w-100 " type="button">
+<div class="row pb-2 pt-1">
+<div class="outerdivs-meta">
+<div class="col-12 text-end">
+<img src="/MetaMask_Fox.png" alt="metamasklogo" class="img-fluid">
+</div>
+<div class="col-12 my-auto p-0 text-start">
+<p>Connected</p>
+</div>
+</div>
+</div>
+</button>
+<button class="w-100 mt-4 " type="button">
+<div class="row pb-2 pt-1">
+<div class="outerdivs-meta">
+<div class="col-12 text-end">
+<img src="/walletconnect.png" alt="metamasklogo" class="img-fluid">
+</div>
+<div class="col-12 my-auto p-0 text-start"><p>Disconnect Connect</p></div>
+</div>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="gpt3__header section__padding" id="home"><div class="gpt3__header-content"><h1 class="gradient__text">EMERSA</h1><div class="wrapper"><div class="video-main"><div class="promo-video"><div class="waves-block"><div class="waves wave-1"></div>
+<div class="waves wave-2"></div>
+<div class="waves wave-3"></div></div></div><a href="https://youtu.be/vDwgWHw7eWA" class="video video-popup mfp-iframe" data-lity="true"><i class="fa fa-play" style="margin-top: 33%;"></i>
+</a></div></div><p>Connections are evolving and so do we. <br> Virtual heaven with limitless possibilities.</p><div class="gpt3__header-content__input"><a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3"> <button id="bt">Join discord</button> </a></div>
+<div class="gpt3__header-content__people"><p>Support the server &amp; Join Emersa Discord Community</p></div></div>
+<div id="gpt3headerimage" class="gpt3__header-image">
+</div>
+</div></div>
+<div class="gpt3__brand section__padding"><div><img src="/media/google.54dc1fc9.png" class="google"></div>
+<div><img src="/media/dropbox.e9792e93.png" class="dropbox"></div>
+<div><img src="/media/shopify.e9b6fccf.png" class="shopify"></div>
+</div>
+<div class="gpt3__whatgpt3 section__margin" id="wgpt3"><div class="gpt3__whatgpt3-feature"><div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>What is Emersa</h1></div>
+<div class="gpt3__features-container_feature-text"><p> A pioneering 21st century digital connection. The focus is on communication, adventure and education. Built on Unreal Engine and Blockchain with our governance token $ROLAIS, we're aiming to deliver the best most secure social space for you. Join us now.</p></div></div></div>
+<div class="gpt3__whatgpt3-heading"><h1 class="gradient__text">Virtual Heaven</h1></div>
+<div class="gpt3__whatgpt3-container"><div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Connection</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Extended reality is the future. Distance will vanish. Connect across the Globe in ways you dream of.</p></div></div>
+<div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Adventure</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Every moment is in front of your eyes. Experience Emersa Akashaverse.</p></div></div>
+<div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Education</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Web 3.0 integrating virtual reality brings the best and most effective hands on learning experience.</p></div></div></div></div>
+<div class="gpt3__features section__padding" id="features"><div class="gpt3__features-heading"><h1 class="gradient__text">The Future is Now. Let's Make it Happen.</h1><p>Opening Soon</p></div>
+<div class="gpt3__features-container"><div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Create.</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Create your own personalized world, a world you feel the most comfortable and proud at and share it with others.</p></div></div>
+<div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Explore.</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Explore your friends worlds and see the life from their perspective.</p></div></div>
+<div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Trade.</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Buy and sell digital items, enjoy the experience while making money on the go.</p></div></div>
+<div class="gpt3__features-container__feature"><div class="gpt3__features-container__feature-title"><div></div><h1>Display</h1></div>
+<div class="gpt3__features-container_feature-text"><p>Customise the showcase of your digital items with the ultra privacy blockchain offers.</p></div></div></div></div>
+<div class="gpt3__possibility section__padding" id="possibility"><div class="gpt3__possibility-image"><img src="/media/possibility.f131bccc.png" alt="possibility"></div>
+<div class="gpt3__possibility-content"><h4>Early Access Soon</h4><h1 class="gradient__text">The possibilities are <br> beyond your imagination</h1><p>Emersa offers technologies helping people connect, find communities, and grow businesses. Share immersive experiences with other people and do things together you couldn’t do in the physical world. It’s the next evolution in a long line of social technologies. Be part of change.</p><h4>Education &amp; Sustainability is key.</h4></div></div>
+<div class="gpt3__cta"><div class="gpt3__cta-content"><p>Register for Presale</p><h3>Register Today &amp; start exploring the endless possibilities.</h3></div>
+<div class="gpt3__cta-btn"><a target="_blank" rel="noreferrer" href="https://forms.gle/RmPfXnLzgbuYAqPY6"> <button id="bt">The PRESALE form</button> </a></div></div>
+<div><section><div class="container" id="team"><div class="row flex-center sm-no-flex"><div class="pull-right sm-no-float col-md-8"><ul class="team-members"><li class="clearfix"><div class="member-details"><div><img src="/media/person1.c7cbe279.png" alt="UI Designer"><div class="member-info"><h3>Alan Solis</h3><p>CMO</p></div></div></div>
+<div class="member-details"><div><img src="/media/shant.8f4eadb8.png" alt="UI Designer"><div class="member-info"><h3>Shant Pourian</h3><p>CBO</p></div></div></div>
+<div class="member-details"><div><img src="/media/martin.86954b11.png" alt="CMO"><div class="member-info"><h3>Martin Kuprik</h3><p>CEO &amp; Founder</p></div></div></div></li></ul></div>
+<div class="pull-left col-md-4 sm-text-center"><div class="team-overview"><h2>Who Are We?</h2><p></p><div>Emersa A-team is a bunch of geeks, nerds and artists coming together to share knowledge. Our goal is to build highly-engaging experiences in the metaverse.</div><p></p></div></div></div></div></section></div>
+<div class="gpt3__blog section__padding" id="blog"><div class="gpt3__blog-heading"><h1 class="gradient__text">A lot is happening <br> Emersa Unreal visual demo v2.4 is in.</h1></div>
+<div class="gpt3__blog-container"><div class="gpt3__blog-container_groupA"><div class="gpt3__blog-container_article"><div class="gpt3__blog-container_article-image"><img src="/media/blog01.ca941581.png" alt="blog_image"></div>
+<div class="gpt3__blog-container_article-content"><div><p>Jan 21,2022</p><h3>Emersa genesis land NFTs presale coming soon.</h3></div><p>Opening soon</p></div></div></div>
+<div class="gpt3__blog-container_groupB"><div class="gpt3__blog-container_article"><div class="gpt3__blog-container_article-image"><img src="/media/blog02.cef4bf25.png" alt="blog_image"></div>
+<div class="gpt3__blog-container_article-content"><div><p></p><h3>Fashion a new way to express.</h3></div><p>Opening soon</p></div></div>
+<div class="gpt3__blog-container_article"><div class="gpt3__blog-container_article-image"><img src="/media/blog03.9784676f.png" alt="blog_image"></div>
+<div class="gpt3__blog-container_article-content"><div><p></p><h3>Elevating education with more hands-on experiment.</h3></div><p>Opening soon</p></div></div>
+<div class="gpt3__blog-container_article"><div class="gpt3__blog-container_article-image"><img src="/media/blog04.8e003c70.png" alt="blog_image"></div>
+<div class="gpt3__blog-container_article-content"><div><p></p><h3>Collaboration is key.</h3></div><p>Opening soon</p></div></div>
+<div class="gpt3__blog-container_article"><div class="gpt3__blog-container_article-image"><img src="/media/blog05.a064f6ae.png" alt="blog_image"></div>
+<div class="gpt3__blog-container_article-content"><div><p></p>
+<h3>The gaming experience is a breeze at EMERSA.</h3></div><p>Opening soon</p></div></div></div></div></div>
+<div class="gpt3__footer section__padding footer-main"><div class="gpt3__footer-heading"><h1 class="gradient__text">STEP INTO THE FUTURE</h1></div><p></p><div class="gpt3__footer-btn"><a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3"> <button id="bt">Join Discord</button> </a></div><p></p><div class="gpt3__footer-links"><div class="gpt3__footer-links_logo"><p><br>Web 3.0 is here. To access the Metaverse, connect your Metamask with Akasha City Genesis NFT. Obtain your token in MINTY</p></div><p><a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3"> <button id="bt">Join discord</button> </a></p><div class="gpt3__footer-links_div"></div>
+<div class="gpt3__footer-links_div"><h4>Get in touch</h4><a target="_blank" rel="noreferrer" href="https://twitter.com/emersaofficial"> <button id="bt">Twitter</button> </a><p>dcl@akasha.gl</p></div></div>
+<div class="gpt3__footer-copyright"><p>@2023 Beamport Analytics. All rights reserved.</p></div></div>
+<script src="/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="/js/cheatsheet.js"></script>
+</body>
+</html>
