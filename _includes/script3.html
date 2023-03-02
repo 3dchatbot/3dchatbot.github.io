@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Dude 123</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main2.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.js"></script>  
-	</head>
-
-	<body>
-
-
+<script>//var object5 = "I'm going to fuck you silly";</script>
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.js"></script>  
 		<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
 		<script type="importmap">
@@ -39,6 +28,7 @@
 			render();
 
 			function init() {
+               
  // Buttons startButton and resetButton
  var startButton = document.getElementById( 'startButtonId' );
  var resetButton = document.getElementById( 'resetButtonId' );
@@ -208,11 +198,26 @@ render();
            
                 playtrack.onclick = function playtrack1() {
                          // create a global audio source
-                         const listener = new THREE.AudioListener();
+                const image2 = `<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">`;
+                const image1 = `{% include image2.html %}`;
+                let xhr = new XMLHttpRequest();
+                var userMessage = document.querySelector("#userInput").value;
+                let userHtml = '<div class="d-flex justify-content-end mb-4">'+'<div class="msg_cotainer_send">'+userMessage+'</div>'+image1+'</div>'
+                document.querySelector('#body').innerHTML+= userHtml;
+                xhr.open(`GET`, `https://chatapi-vd80.onrender.com/test123/${userMessage}`);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(`messageValue=${userMessage}`);
+                xhr.onload = function () {
+                var obj = JSON.parse(this.responseText);
+                var obj1q = JSON.stringify(this.responseText);
+                let botHtml = '<div class="d-flex justify-content-start mb-4">'+'<div class="img_cont_msg">'+image2+'</div>'+'<div class="msg_cotainer">'+obj.traits.text[0].value+'</div>'+'</div>'
+                document.querySelector('#body').innerHTML+= botHtml;
+                var object5a = obj.traits.text[0].value;
+                const listener = new THREE.AudioListener();
                 camera.add( listener );
                 const sound = new THREE.Audio( listener );
                 const audioLoader = new THREE.AudioLoader();
-audioLoader.load( 'https://nodetts.onrender.com/?text=i%20just%20want%20to%20fuck%20you', function( buffer ) {
+audioLoader.load( `https://nodetts.onrender.com/?text=${object5a}`, function( buffer ) {
     //sound.start(0);
 	sound.setBuffer( buffer );
 	sound.setLoop( false );
@@ -220,6 +225,8 @@ audioLoader.load( 'https://nodetts.onrender.com/?text=i%20just%20want%20to%20fuc
 	sound.play();
     
 }); 
+                };
+              
                 };
 				window.addEventListener( 'resize', onWindowResize );
 
@@ -246,8 +253,3 @@ audioLoader.load( 'https://nodetts.onrender.com/?text=i%20just%20want%20to%20fuc
 			}
 
 		</script>
-<div style="color: black;" id="startButtonId">Open Mouth</div>
-<div style="color: black;" id="resetButtonId">Blink</div>
-<div style="color: black;" id="playtrack">play</div>
-	</body>
-</html>
