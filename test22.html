@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - GLTFloader</title>
+		<title>Dude 123</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main2.css">
@@ -122,19 +122,8 @@ head.morphTargetInfluences[7] = value;
 });
 
 startButton.onclick = function StartAnimation() {
-   
- startButton.innerHTML = 'Stop';
-    setInterval(function() { 
-          
-        head.morphTargetInfluences[0] = 1;
-
-        }, 500);
-       
-
-  setInterval(function() { 
-   
-          head.morphTargetInfluences[0] = 0;
-          }, 1000).then(clearInterval());
+setTimeout(function() {head.morphTargetInfluences[0] = 1;}, 500);
+setTimeout(function() {head.morphTargetInfluences[0] = 0;}, 1000);
 
           
          
