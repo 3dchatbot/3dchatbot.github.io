@@ -69,7 +69,7 @@ const showUserDashboard = async () => {
   }
 
   // change the page title
-  document.title = "Web3 Dashboard  🤝";
+ // document.title = "Web3 Dashboard  🤝";
 
   // hide the login section
   document.querySelector(".login-section").style.display = "none";
