@@ -87,7 +87,7 @@ const showUserDashboard = async () => {
 // show the user's wallet address from the global userWalletAddress variable
 const showUserWalletAddress = () => {
   const walletAddressEl = document.querySelector(".wallet-address");
-  walletAddressEl.innerHTML = window.userWalletAddress;
+//  walletAddressEl.innerHTML = window.userWalletAddress;
 };
 
 // get the user's wallet balance
@@ -101,10 +101,10 @@ const getWalletBalance = async () => {
   const balance = await window.web3.eth.getBalance(window.userWalletAddress);
 
   // convert the balance to ether
-  document.querySelector(".wallet-balance").innerHTML = web3.utils.fromWei(
+ /* document.querySelector(".wallet-balance").innerHTML = web3.utils.fromWei(
     balance,
     "ether"
-  );
+  );*/
 };
 
 // web3 logout function
