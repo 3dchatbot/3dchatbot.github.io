@@ -56,7 +56,7 @@ const showUserDashboard = async () => {
   // if the user is not logged in - userWalletAddress is null
   if (!window.userWalletAddress) {
     // change the page title
-    document.title = "Web3 Login";
+    //document.title = "Web3 Login";
 
     // show the login section
     document.querySelector(".login-section").style.display = "flex";
