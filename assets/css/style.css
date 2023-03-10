@@ -606,3 +606,16 @@ p {
     font-size: 64px;
     line-height: 75px;
 }
+.user_info span {
+    font-size: 20px;
+    color: white;
+}
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
+}
+.card {
+    height: 500px;
+    border-radius: 15px !important;
+    background-color: rgba(0,0,0,0.4) !important;
+}
