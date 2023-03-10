@@ -646,6 +646,8 @@ p {
 .card-footer {
     border-radius: 0 0 15px 15px !important;
     border-top: 0 !important;
+    position: absolute;
+    bottom: 0px;
 }
 .msg_card_body {
     overflow-y: auto;
@@ -789,4 +791,17 @@ p {
     -ms-flex-align: stretch;
     align-items: stretch;
     width: 100%;
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.msg_head {
+    position: relative;
+}
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
 }
