@@ -537,6 +537,13 @@ p {
     cursor: pointer;
     min-width: 150px;
 }
+.col-sm-4 h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
 .navbar-brand {
     float: left;
     height: 97px !important;

@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link href="/assets/css/style.css" rel="stylesheet">
+  {% include script5.html %}
 </head>
 <body style="background: #6c2a90;">
 <div style="background: radial-gradient(circle at 3% 25%,#333 5%,#1a1a1a 25%)" class="">
@@ -53,7 +54,11 @@
     <div class="row" style="padding: 0px;margin: 0px;">
         <div class="col-sm-4">
             <br /><br />
-            <h1 class="gradient-text">EMERSA</h1>
+            <h1 style="font-family: var(--font-family);
+            font-weight: 800;
+            font-size: 62px;
+            line-height: 75px;
+            letter-spacing: -0.04em;" class="gradient-text">EMERSA</h1>
             <div class="wrapper">
                 <div class="video-main">
                   <div class="promo-video">
@@ -68,16 +73,47 @@
           </a>
           </div>
           </div>
-            <p>Connections are evolving and so do we. <br /> Virtual heaven with limitless possibilities.</p>
+            <p style="font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 28px;
+            color: var(--color-text);
+            margin-top: 1.5rem;">Connections are evolving and so do we. <br /> Virtual heaven with limitless possibilities.</p>
 
             <div class="gpt3__header-content__input">
-                <a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3"> <button id="bt">Join discord</button> </a>
+                <a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3"> 
+                <button style="flex: 0.6;
+               /* width: 100%;*/
+                min-height: 50px;
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 28px;
+                background: #FF4820;
+                border: 2px solid #FF4820;
+                padding: 0 1rem;
+                color: #fff;
+                cursor: pointer;
+                outline: none;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;" id="bt">Join discord</button> </a>
               </div>
-              <div class="gpt3__header-content__people">
+              <div class="gpt3__header-content__people" style="margin: 0 0 0 1rem;font-family: var(--font-family); font-weight: 500;font-size: 16px; line-height: 38px;color: #fff; text-align: center;">
                 <p>Support the server &amp; Join Emersa Discord Community</p>
             </div>
         </div>
-        <div class="col-sm-8">col-8</div>
+        <div class="col-sm-8">
+
+            <div id="gpt3headerimage" class="gpt3__header-image">
+                <section id="loading-screen">
+              
+                  <div id="loader"></div>
+              
+              </section>
+                {% include chatbotwithcolomn1.html %}
+              </div>
+
+        </div>
       </div>
 </div>
   
@@ -330,34 +366,7 @@
       </div>
       </div>
 
-      <!-- footer-->
-      <div class="gpt3__footer section__padding footer-main">
-        <div class="gpt3__footer-heading">
-          <h1 class="gradient__text">STEP INTO THE FUTURE</h1>
-        </div>
-        <p></p>
-        <div class="gpt3__footer-btn">
-          <a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3">
-            <button id="bt">Join Discord</button>
-          </a>
-        </div>
-        <p></p>
-        <div class="gpt3__footer-links">
-          <div class="gpt3__footer-links_logo">
-            <p><br>Web 3.0 is here. To access the Metaverse, connect your Metamask with Akasha City Genesis NFT. Obtain your token in MINTY</p>
-          </div>
-          <p><a target="_blank" rel="noreferrer" href="https://discord.gg/aeeHKD6AR3"><button id="bt">Join discord</button></a></p>
-          <div class="gpt3__footer-links_div"></div>
-      <div class="gpt3__footer-links_div">
-        <h4>Get in touch</h4>
-        <a target="_blank" rel="noreferrer" href="https://twitter.com/emersaofficial"><button id="bt">Twitter</button></a>
-        <p>dcl@akasha.gl</p>
-      </div>
-      </div>
-      <div class="gpt3__footer-copyright">
-        <p>@2023 Beamport Analytics. All rights reserved.</p>
-      </div>
-      </div>
+{% include footer1.html %}
 
 </body>
 <script src="/js/cheatsheet.js"></script>
