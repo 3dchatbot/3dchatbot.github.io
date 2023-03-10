@@ -537,3 +537,27 @@ p {
     cursor: pointer;
     min-width: 150px;
 }
+.navbar-brand {
+    float: left;
+    height: 97px !important;
+    padding: 15px 15px;
+    font-size: 18px;
+    /* line-height: 20px; */
+}
+.team-members li:last-child>div:first-child {
+    margin-left: 40%;
+}
+.team-members li>div {
+    float: left;
+    width: 20%;
+}
+.member-info {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: rotate(45deg) translate(-12px,15px);
+    transform: rotate(45deg) translate(-12px,15px);
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+}
