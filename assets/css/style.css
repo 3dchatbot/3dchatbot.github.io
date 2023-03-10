@@ -805,3 +805,14 @@ p {
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
 }
+.gpt3__header-image{
+flex: 1;
+display: flex;
+/* justify-content: center; */
+/* align-items: center; */
+position: relative;
+ left: -150%;
+/*overflow: hidden !important;*/
+z-index: 0;
+width: 100%;
+}
