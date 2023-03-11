@@ -822,4 +822,9 @@ width: 100%;
     position: relative;
     padding-top: -100% !important;
     top: -50% !important; */
+    right: 50%;
+    top: -250% !important;
+    position: relative;
+    margin-top: -40%;
+    overflow: hidden;
 }
