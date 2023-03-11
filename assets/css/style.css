@@ -821,4 +821,5 @@ width: 100%;
     overflow: hidden;
     position: relative;
     padding-top: -100%;
+    top: -120% !important;
 }
