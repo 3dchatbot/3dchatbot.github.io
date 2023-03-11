@@ -817,9 +817,9 @@ z-index: 0;
 width: 100%;
 }
 #Div1 canvas{
-    margin-left: -50% !important;
+   /* margin-left: -50% !important;
     overflow: hidden;
     position: relative;
-    padding-top: -100%;
-    top: -120% !important;
+    padding-top: -100% !important;
+    top: -50% !important; */
 }
