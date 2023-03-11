@@ -820,7 +820,5 @@ width: 100%;
     margin-left: -50% !important;
     overflow: hidden;
     position: relative;
-    top: -170% !important;
-    margin-top: -72% !important;
-    z-index: 50;
+    padding-top: -100%;
 }
