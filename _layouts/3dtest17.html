@@ -2102,7 +2102,32 @@ Virtual heaven with limitless possibilities.<br />
 </div>
 </div>
 </section>
-
+<script>
+	( function ( $, window, document, undefined ) {
+	
+		$( "#page_head_e94e9c6c2155c1111cde1a0d206f282c .cta a" ).click( function ( e ) {
+	
+			if ( $( this ).attr( 'href' ) == '#' ) {
+				e.preventDefault();
+				e.stopPropagation();
+				var elm = $( 'section' ).eq( 1 );
+				window.scroll( {
+					behavior: 'smooth',
+					left:     0,
+					top:      elm.get()[0].offsetTop
+				} );
+				return false;
+			}
+	
+		});
+	
+	} )( jQuery, window, document );
+	</script>
+	<script>
+		$( "#page_head_e94e9c6c2155c1111cde1a0d206f282c .hitbox" ).click( function () {
+			GlobalVideoPlayer.src( $( this ).data( 'src' ) );
+		});
+	</script>
 
 </div>
 <div id="section-1" class="section-wrap  block-1">
@@ -2834,6 +2859,7 @@ Including 4 of the Fortune 10 and Hundreds of the Global 2000 </div>
 </div>
 </div>
 </section>
+
 <script>
 ( function ( $, window, document, undefined ) {
 
