@@ -1,7 +1,7 @@
-<div id="section-2" class="section-wrap  block-2">
+<div id="section-2" class="">
     <section id="interactive_f0c7d017c52d5af2cb668c11f3a90765" class="interactive lazy f0c7d017c52d5af2cb668c11f3a90765 dark stacked" style="background-color:#0b0c1b;" data-bg-multi="">
-    <div class="full-width" style="background-color:;">
-    <div class="container-full-wide">
+    <div class="" style="background-color:;">
+    <div class="">
     
         <ul>
             {% for team in site.data.teams %}
@@ -18,6 +18,36 @@
             {% endfor %}
             </ul>
     
+            <div id="team1" class="block">
+                <div class="animation">
+                    
+                    {% for team in site.data.teams %}
+                    <div>
+                        <img style="height: 200px;width: 200px;" src="{{ team.image }}">
+                        <br />
+                        {{ team.name }}
+                    </div>
+                    {% endfor %}
+                  <div>
+                    <img src="http://fpoimg.com/200x200?text=Second">
+                  </div>
+                  <div>
+                    <img src="http://fpoimg.com/200x200?text=Third">
+                  </div>
+                  <div>
+                    <img src="http://fpoimg.com/200x200">
+                  </div>
+                  <div>
+                    <img src="http://fpoimg.com/200x200">
+                  </div>
+                  <div>
+                    <img src="http://fpoimg.com/200x200">
+                  </div>
+                  <!-- cut -->
+                </div>
+              </div>
+
+
     <style>
     #singularity-graphic {
     display: block;
