@@ -66,45 +66,52 @@
   height: 100px;
   font-size: 0px;
 }
+.teamname{
+    height: 50px;
+    width: 200px;
+    color: #0b0c1b !important;
+    display:block;
+    background-color: white !important;
+}
 .animation div {
   display: inline-block;
   width: auto;
   float: none;
   padding: 0 10px;
 }
+    
+#scroller {
+        position: relative;
+    }
+    #scroller .innerScrollArea {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    #scroller ul {
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    #scroller li {
+    /* padding: 0; */
+    padding-left: 10px !important;
+    padding-right: 10px;
+    margin: 0;
+    margin-left: 30px;
+    list-style-type: none;
+    position: absolute;
+    background-color: black;
+    }
+    
     </style>
     
-    <script type="text/plain" class="optanon-category-C0003">
-        var _tvq = window._tvq = window._tvq || [];
-        (function() {
-            var u = (("https:" == document.location.protocol) ? "https://collector-5527.tvsquared.com/" : "http://collector-5527.tvsquared.com/");
-            _tvq.push(['setSiteId', "TV-45457227-1"]);
-            _tvq.push(['setTrackerUrl', u + 'tv2track.php']);
-            _tvq.push([function() {
-                this.deleteCustomVariable(5, 'page')
-            }]);
-            _tvq.push(['trackPageView']);
-            var d = document,
-                g = d.createElement('script'),
-                s = d.getElementsByTagName('script')[0];
-            g.type = 'text/javascript';
-            g.defer = true;
-            g.async = true;
-            g.src = u + 'tv2track.js';
-            s.parentNode.insertBefore(g, s);
-        })();
-    </script>
+ 
     
-    
-    <script type="text/plain" class="optanon-category-C0004">
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '300800713594069'); fbq('init', '307303873637462');
-    fbq('track', "PageView");</script>
+
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=300800713594069&ev=PageView&noscript=1"
     /></noscript>
@@ -151,8 +158,8 @@
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
     <script type='text/javascript' src='//go.sentinelone.com/js/forms2/js/forms2.min.js' id='marketo-forms-js'></script>
     <script type='text/javascript' src='https://www.sentinelone.com/wp-content/themes/sentinelone/carbine/assets/js/header.min.js?ver=1678401210' id='carbine-script-header-js'></script>
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.sentinelone.com/wp-includes/wlwmanifest.xml" />
-    <link rel='shortlink' href='https://www.sentinelone.com/?p=34310' />
+ 
+   
     <style id="wpp-loading-animation-styles">@-webkit-keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}@keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}.wpp-widget-placeholder,.wpp-widget-block-placeholder{margin:0 auto;width:60px;height:3px;background:#dd3737;background:linear-gradient(90deg,#dd3737 0%,#571313 10%,#dd3737 100%);background-size:200% auto;border-radius:3px;-webkit-animation:bgslide 1s infinite linear;animation:bgslide 1s infinite linear}</style>
     <meta property="og:title" content="" class="yoast-seo-meta-tag">
     <meta property="og:description" content="" class="yoast-seo-meta-tag">
@@ -276,4 +283,50 @@ function initSmoothScrolling(container,animation){
 }
 
         </script>
+
+
+<script type="text/javascript">
+    $(function(){
+        var scroller = $('#scroller div.innerScrollArea');
+        var scrollerContent = scroller.children('ul');
+        scrollerContent.children().clone().appendTo(scrollerContent);
+        var curX = 0;
+        scrollerContent.children().each(function(){
+            var $this = $(this);
+            $this.css('left', curX);
+            curX += $this.width();
+        });
+        var fullW = curX / 2;
+        var viewportW = scroller.width();
+
+        // Scrolling speed management
+        var controller = {curSpeed:0, fullSpeed:2};
+        var $controller = $(controller);
+        var tweenToNewSpeed = function(newSpeed, duration)
+        {
+            if (duration === undefined)
+                duration = 600;
+            $controller.stop(true).animate({curSpeed:newSpeed}, duration);
+        };
+
+        // Pause on hover
+        scroller.hover(function(){
+            tweenToNewSpeed(0);
+        }, function(){
+            tweenToNewSpeed(controller.fullSpeed);
+        });
+
+        // Scrolling management; start the automatical scrolling
+        var doScroll = function()
+        {
+            var curX = scroller.scrollLeft();
+            var newX = curX + controller.curSpeed;
+            if (newX > fullW*2 - viewportW)
+                newX -= fullW;
+            scroller.scrollLeft(newX);
+        };
+        setInterval(doScroll, 20);
+        tweenToNewSpeed(controller.fullSpeed);
+    });
+</script>
     </head>

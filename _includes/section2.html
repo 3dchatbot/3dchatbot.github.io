@@ -2,50 +2,34 @@
     <section id="interactive_f0c7d017c52d5af2cb668c11f3a90765" class="interactive lazy f0c7d017c52d5af2cb668c11f3a90765 dark stacked" style="background-color:#0b0c1b;" data-bg-multi="">
     <div class="" style="background-color:;">
     <div class="">
-    
-        <ul>
-            {% for team in site.data.teams %}
-              <li>
-                {% if team.github %}
-  <a href="https://github.com/{{ team.github }}">
-                  {{ team.name }}
-                </a>
-            </li>
-                {% else %}
-                {{ team.name }}
-            </li>
-{% endif %}
-            {% endfor %}
-            </ul>
-    
-            <div id="team1" class="block">
-                <div class="animation">
-                    
-                    {% for team in site.data.teams %}
-                    <div>
-                        <img style="height: 200px;width: 200px;" src="{{ team.image }}">
-                        <br />
-                        {{ team.name }}
-                    </div>
-                    {% endfor %}
-                  <div>
-                    <img src="http://fpoimg.com/200x200?text=Second">
-                  </div>
-                  <div>
-                    <img src="http://fpoimg.com/200x200?text=Third">
-                  </div>
-                  <div>
-                    <img src="http://fpoimg.com/200x200">
-                  </div>
-                  <div>
-                    <img src="http://fpoimg.com/200x200">
-                  </div>
-                  <div>
-                    <img src="http://fpoimg.com/200x200">
-                  </div>
-                  <!-- cut -->
+            <div id="scroller" style="width: 550px; height: 200px; margin: 0 auto;">
+                <div class="innerScrollArea">
+                <ul>
+
+                {% for team in site.data.teams %}
+                <li>
+                <div style="background-color: #fff; height: 200px;width: 200px;">
+                <img style="height: 100px;width: 100px;border-radius: 50%;" src="{{ team.image }}"/>
+                <br />
+                <span>{{ team.name }}</span>
+                <br />
+                <span style="height: 20px;width: 200px">
+                    {% if team.linkedin %}
+                    <img style="height: 20px;width: 20px; z-index: 20;" src="/media/linkedin-svgrepo-com.svg">
+                    {% else %}
+                    <img style="height: 20px;width: 20px; z-index: 20;" src="/media/break.png">
+                    {% endif %}
+                    </span>
+                   
                 </div>
-              </div>
+            </li>
+
+                {% endfor %}
+                </ul>
+                </div>
+                </div>
+
+            
 
 
     <style>
