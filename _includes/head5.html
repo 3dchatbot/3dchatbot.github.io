@@ -223,6 +223,20 @@
             var $ = jQuery.noConflict();
         </script>
         <script>
+            var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+//-- usage --//
+preload(
+    "/media/logo2.png",
+)
+        </script>
+        <script>
             $(window).on('load', function(){
   // Please run it with window.onload, not with document.ready
   initSmoothScrolling('.block','smoothscroll');
