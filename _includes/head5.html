@@ -46,6 +46,9 @@
   margin: 50px auto;
  /* background: #fff;*/
 }
+.disappear{
+    visibility: hidden;
+}
 .block6 {
   overflow: hidden;
   width: 800px;
@@ -143,6 +146,22 @@ preload(
 "/media/logo2.png",
 )
     </script>
+    <script>
+        $(window).load(function() {
+            var appear1 = 1;
+        })
+        function appear() {
+            if(appear1 = 1){
+            var appear1 = 2;
+  var element = document.getElementById("chat1");
+  element.classList.remove("disappear");
+  console.log(appear1);
+}else{
+    alert('hi there')
+}
+
+}
+    </script>
     <script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.sentinelone.com/","url":"https://www.sentinelone.com/","name":"Singularity XDR | SentinelOne","isPartOf":{"@id":"https://www.sentinelone.com/#website"},"datePublished":"2020-09-23T06:46:16+00:00","dateModified":"2023-03-08T20:43:29+00:00","description":"A.I. , 3D, Gaming","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.sentinelone.com/"]}]},{"@type":"WebSite","@id":"https://www.sentinelone.com/#website","url":"https://www.sentinelone.com/","name":"SentinelOne","description":"Next Generation Endpoint Security","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.sentinelone.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"}]}</script>
     
 
@@ -209,14 +228,14 @@ preload(
   padding: 5px;
   z-index: 5000;
     }
-    .chat1{
+    #chat1{
         position: fixed !important;
   right: 0px; bottom: 0px;
  
   /*height:40px;*/
   /*background-color:rgb(10, 10, 10);*/
   padding: 5px;
-  z-index: 5000;
+  z-index: 4000;
     }
     .micon {
   height: 50px;
