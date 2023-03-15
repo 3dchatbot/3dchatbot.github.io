@@ -20,3 +20,9 @@
 .menu-item1:hover>a {
     color: #39f0ba;
 }
+.dashboard-section {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  }
