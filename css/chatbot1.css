@@ -108,6 +108,8 @@ display: flex;
 }
 .msg_card_body {
     overflow-y: auto;
+    height: 331px;
+    width: 30%;
 }
 .user_img_msg {
     height: 40px;
