@@ -64,8 +64,8 @@ z-index: 4;
     border-bottom: 0 !important;
 }
 .img_cont_msg {
-    height: 40px;
-    width: 40px;
+    height: 40px !important;
+    width: 40px !important;
 }
 .mb-4 {
     margin-bottom: 1.5rem!important;
@@ -101,4 +101,9 @@ z-index: 4;
 }
 .msg_card_body {
     overflow-y: auto;
+}
+.user_img_msg {
+    height: 40px;
+    width: 40px;
+    border: 1.5px solid #f5f6fa;
 }
