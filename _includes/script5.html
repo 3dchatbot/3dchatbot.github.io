@@ -117,6 +117,11 @@ controls.addEventListener( 'change', render ); // use if there is no animation l
 controls.minDistance = 2;
 controls.maxDistance = 10;
 controls.target.set( 0, 0, - 0.2 );
+controls.noPan = true;
+//controls.maxDistance = controls.minDistance = yourfixeddistnace;  
+controls.noKeys = true;
+controls.noRotate = true;
+controls.noZoom = true;
 controls.update();
 const controls2 = new TrackballControls(camera, renderer.domElement);
 controls2.rotateSpeed = 1.0;
