@@ -1,0 +1,65 @@
+#chat1{
+position: fixed !important;
+right: 50%; 
+bottom: 0px;
+width:50%;
+margin-right: -50%;
+/*height:40px;*/
+/*background-color:rgb(10, 10, 10);*/
+padding: 5px;
+z-index: 4;
+}
+.chat2{
+    opacity:0.3;
+    position: absolute ;
+    margin-top:40%;
+    z-index: 1000 !important;
+    overflow: hidden !important; 
+    flex: 0 0 auto; width: 100%; 
+    background-color: rgba(54, 25, 25, .00004);;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.gpt3__header-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 25%;
+}
+.img_cont {
+    position: relative;
+    height: 70px;
+    width: 70px;
+}
+.card4 {
+    height: 500px;
+    border-radius: 15px !important;
+    background-color: rgba(0,0,0,0.4) !important;
+}
+.user_img {
+    height: 70px;
+    width: 70px;
+    border: 1.5px solid #f5f6fa;
+}
+.user_info {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+.online_icon {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #4cd137;
+    border-radius: 50%;
+    bottom: 0.2em;
+    right: 0.4em;
+    border: 1.5px solid white;
+}
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
+}
