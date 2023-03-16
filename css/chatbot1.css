@@ -108,3 +108,7 @@ z-index: 4;
     width: 40px;
     border: 1.5px solid #f5f6fa;
 }
+.message-sender{
+    right: 0px;
+    position: fixed;
+}

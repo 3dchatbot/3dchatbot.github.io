@@ -132,7 +132,7 @@ const image2 = `<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D
 const image1 = `{% include image2.html %}`;
 let xhr = new XMLHttpRequest();
 var userMessage = document.querySelector("#userInput").value;
-let userHtml = '<div class="d-flex justify-content-end mb-4">'+'<div class="msg_cotainer_send">'+userMessage+'</div>'+image1+'</div>'
+let userHtml = '<div class="d-flex message-sender justify-content-end mb-4">'+'<div class="msg_cotainer_send">'+userMessage+'</div>'+image1+'</div>'
 document.querySelector('#body').innerHTML+= userHtml;
 xhr.open(`GET`, `https://chatapi-vd80.onrender.com/test123/${userMessage}`);
 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
