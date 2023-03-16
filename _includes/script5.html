@@ -11,7 +11,7 @@
 </script>
 <script type="module">
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OrbitControls } from "../js/OrbitControls.js";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
@@ -29,6 +29,11 @@ container.appendChild( renderer.domElement );
 renderer.setSize(container.clientWidth, container.clientHeight);
 camera = new THREE.PerspectiveCamera( 45, container.clientWidth /  container.clientHeight, 0.25, 10 );
 camera.position.set( 0, 0, 0 );
+/*
+camera.position.x = 0;
+camera.position.y = 0;
+camera.position.z = 320;
+*/
 
 scene = new THREE.Scene();
 var light = new THREE.AmbientLight(0xf6e86d);
@@ -115,14 +120,25 @@ container.appendChild( renderer.domElement );
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', render ); // use if there is no animation loop
 controls.minDistance = 2;
-controls.maxDistance = 10;
-controls.target.set( 0, 0, - 0.2 );
+controls.maxDistance = 2;
+controls.target.set( 0, 0, 2 );
 controls.noPan = true;
-//controls.maxDistance = controls.minDistance = yourfixeddistnace;  
+//controls.maxDistance = controls.minDistance = yourfixeddistnace;
+controls.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0};  
 controls.noKeys = true;
 controls.noRotate = true;
 controls.noZoom = true;
+controls.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0};
+//controls.minPolarAngle = 0; // 1.5 * Math.PI / 12; 
+//controls.maxPolarAngle = 0; // 1.5 * Math.PI / 3;
+
+controls.minAzimuthAngle = 0;
+controls.maxAzimuthAngle = 0;
+controls.maxPolarAngle = Math.PI / 2;
+controls.minPolarAngle = Math.PI / 2;
 controls.update();
+
+console.log(camera);
 const controls2 = new TrackballControls(camera, renderer.domElement);
 controls2.rotateSpeed = 1.0;
 controls2.zoomSpeed = 4;
@@ -130,7 +146,8 @@ controls2.panSpeed = 0.8;
 controls2.noZoom = false;
 controls2.noPan = false;
 controls2.staticMoving = true;
-controls2.dynamicDampingFactor = 0.3
+controls2.dynamicDampingFactor = 0.3;
+controls2.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0}; 
 controls2.update();
 playtrack.onclick = function playtrack1() {
 const image2 = `<img src="/media/d1.jpg" class="rounded-circle user_img_msg">`;
