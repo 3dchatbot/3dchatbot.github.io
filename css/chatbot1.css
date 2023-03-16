@@ -1,14 +1,15 @@
 #chat1{
-position: fixed !important;
-right: 50%; 
-bottom: 0px;
-width:50%;
-margin-right: -50%;
-/*height:40px;*/
-/*background-color:rgb(10, 10, 10);*/
-padding: 5px;
-z-index: 4;
-display: flex;
+    position: fixed !important;
+    right: 50%;
+    bottom: 0px;
+    width: 50%;
+    /* margin-right: -50%; */
+    /* height: 40px; */
+    /* background-color: rgb(10, 10, 10); */
+    padding: 5px;
+    z-index: 4;
+    display: flex;
+
 }
 .chat2{
     opacity:0.5;
@@ -77,9 +78,7 @@ display: flex;
 .mb-4 {
     margin-bottom: 1.5rem!important;
 }
-.justify-content-start {
-    justify-content: flex-start!important;
-}
+
 .d-flex {
     display: flex!important;
 }
@@ -108,8 +107,6 @@ display: flex;
 }
 .msg_card_body {
     overflow-y: auto;
-    height: 331px;
-    width: 30%;
 }
 .user_img_msg {
     height: 40px;
@@ -122,6 +119,7 @@ display: flex;
 }
 .justify-content-end {
     justify-content: flex-end!important;
+    width: 30%;
 }
 .justify-content-start {
     justify-content: flex-start!important;
