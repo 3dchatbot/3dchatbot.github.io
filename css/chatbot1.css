@@ -63,3 +63,42 @@ z-index: 4;
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
 }
+.img_cont_msg {
+    height: 40px;
+    width: 40px;
+}
+.mb-4 {
+    margin-bottom: 1.5rem!important;
+}
+.justify-content-start {
+    justify-content: flex-start!important;
+}
+.d-flex {
+    display: flex!important;
+}
+.msg_cotainer_send {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #78e08f;
+    padding: 10px;
+    position: relative;
+}
+.msg_cotainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: #82ccdd;
+    padding: 10px;
+    position: relative;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.msg_card_body {
+    overflow-y: auto;
+}
