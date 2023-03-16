@@ -112,3 +112,9 @@ z-index: 4;
     right: 0px;
     position: fixed;
 }
+.justify-content-end {
+    justify-content: flex-end!important;
+}
+.justify-content-start {
+    justify-content: flex-start!important;
+}
