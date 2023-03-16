@@ -8,6 +8,7 @@ margin-right: -50%;
 /*background-color:rgb(10, 10, 10);*/
 padding: 5px;
 z-index: 4;
+display: flex;
 }
 .chat2{
     opacity:0.5;
