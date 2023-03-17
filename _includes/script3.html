@@ -13,6 +13,8 @@
 			}
 		</script>
 
+        
+
 		<script type="module">
 
 			import * as THREE from 'three';
@@ -27,7 +29,10 @@
 			init();
 			render();
 
+
+
 			function init() {
+                
                
  // Buttons startButton and resetButton
  var startButton = document.getElementById( 'startButtonId' );
@@ -47,7 +52,7 @@
 				
 
 						// model
-
+                        const listener = new THREE.AudioListener();
 						const loader = new GLTFLoader().setPath( '/assets/glb/' );
 						loader.load( 'a1a.glb', function ( gltf ) {
                             gltf.scene.scale.set( 1, 1, 1 );
