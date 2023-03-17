@@ -194,15 +194,20 @@ if (runAnim) {
                 xhr.send(`messageValue=${userMessage}`);
                 xhr.onload = function () {
                 var obj = JSON.parse(this.responseText);
+                console.log(JSON.stringify(obj.traits));
+                var objlength = JSON.stringify(obj.traits);
                 var obj1q = JSON.stringify(this.responseText);
-                let botHtml = '<div class="d-flex justify-content-start mb-4">'+'<div class="img_cont_msg">'+image2+'</div>'+'<div class="msg_cotainer">'+obj.traits.text[0].value+'</div>'+'</div>'
+                if (objlength.length < 3) {
+   var objecttext = "I'm sorry, but I didn't understand the question. Please try again";
+   console.log(objecttext+'dfgdfgdfgdfgdgdgdgdgf'); 
+}else { var objecttext = obj.traits.text[0].value};
+                let botHtml = '<div class="d-flex justify-content-start mb-4">'+'<div class="img_cont_msg">'+image2+'</div>'+'<div class="msg_cotainer">'+objecttext+'</div>'+'</div>'
                 document.querySelector('#body').innerHTML+= botHtml;
-                var object5a = obj.traits.text[0].value;
                 const listener = new THREE.AudioListener();
                 camera.add( listener );
                 const sound = new THREE.Audio( listener );
                 const audioLoader = new THREE.AudioLoader();
-audioLoader.load( `https://nodetts.onrender.com/?text=${object5a}`, function( buffer ) {
+audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( buffer ) {
     //sound.start(0);
 	sound.setBuffer( buffer );
 	sound.setLoop( false );
