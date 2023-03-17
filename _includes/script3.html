@@ -49,15 +49,42 @@
 						// model
 
 						const loader = new GLTFLoader().setPath( '/assets/glb/' );
-						loader.load( 'will.glb', function ( gltf ) {
-                            gltf.scene.scale.set( 5.0, 5.0, 5.0 );
+						loader.load( 'a1a.glb', function ( gltf ) {
+                            gltf.scene.scale.set( 1, 1, 1 );
 						//	scene.add( gltf.scene );
                             const mesh = gltf.scene.children[ 0 ];
-                      
-                      scene.add( mesh );
-                      mesh.scale.set(5,5,5);
-                     //console.log( mesh.name);
-                      const head = mesh.getObjectByName( 'Will' );
+                            const mesh1 = gltf.scene.children[ 1 ];
+                            const mesh2 = gltf.scene.children[ 2 ];
+                            const mesh3 = gltf.scene.children[ 3 ];
+                            const mesh4 = gltf.scene.children[ 4 ];
+                            const mesh5 = gltf.scene.children[ 5 ];
+                            const mesh6 = gltf.scene.children[ 6 ];
+                            const mesh7 = gltf.scene.children[ 7 ];
+                            const mesh8 = gltf.scene.children[ 8 ];
+                            const mesh9 = gltf.scene.children[ 9 ];
+                            const mesh10 = gltf.scene.children[ 10 ];
+                            const mesh11 = gltf.scene.children[ 11 ];
+                            const mesh12 = gltf.scene.children[ 12 ];
+                            const mesh13 = gltf.scene.children[ 13 ];
+                            const mesh14 = gltf.scene.children[ 14 ];
+                            const mesh15 = gltf.scene.children[ 15 ];
+                            const mesh16 = gltf.scene.children[ 16 ];
+                            const mesh17 = gltf.scene.children[ 17 ];
+                            const mesh18 = gltf.scene.children[ 18 ];
+                            const mesh19 = gltf.scene.children[ 19 ];
+                            const mesh20 = gltf.scene.children[ 20 ];
+                            const mesh21 = gltf.scene.children[ 21 ];
+                            const mesh22 = gltf.scene.children[ 22 ];
+                            const mesh23 = gltf.scene.children[ 23 ];
+                            const mesh24 = gltf.scene.children[ 24 ];
+                            const mesh25 = gltf.scene.children[ 25 ];
+                            const mesh26 = gltf.scene.children[ 26 ];
+                            const mesh27 = gltf.scene.children[ 27 ];
+                            const mesh28 = gltf.scene.children[ 28 ];
+                      scene.add( mesh, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7, mesh8, mesh9, mesh10, mesh11, mesh12, mesh13, mesh14, mesh15, mesh16, mesh17, mesh18, mesh19, mesh20, mesh21, mesh22, mesh23, mesh24, mesh25, mesh26, mesh27, mesh28);
+                      mesh.scale.set(0.010783,0.010783,0.010783);
+                     console.log( mesh, mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7, mesh8, mesh9, mesh10, mesh11, mesh12, mesh13, mesh14, mesh15, mesh16, mesh17, mesh18, mesh19, mesh20, mesh21, mesh22, mesh23, mesh24, mesh25, mesh26, mesh27, mesh28);
+                      const head = mesh;
                        var     mixer = new THREE.AnimationMixer( head );
                        var gui = new dat.GUI();
                       
@@ -74,47 +101,17 @@
                 
 
                 const control = {
-					OpenMouth: 0,
-                    Blink: 0,
-                    Eyebrows: 0,
-					Smile: 0,
-                    LookLeft: 0,
-                    LookRight: 0,
-                    Lookup: 0,
-                    Lookdown: 0
+					OpenMouth: 0
 				};
 			
 gui.add(control, 'OpenMouth', 0,1).step(0.01).listen().onChange(function(value){
 // const head = mesh.getObjectByName( 'Will' );
-head.morphTargetInfluences[0] = value;
-});
-gui.add(control, 'Blink', 0,1).step(0.01).listen().onChange(function(value){
-// const head = mesh.getObjectByName( 'Will' );
-head.morphTargetInfluences[1] = value;
-});
-gui.add(control, 'Eyebrows', 0,1).step(0.01).listen().onChange(function(value){
-// const head = mesh.getObjectByName( 'Will' );
-head.morphTargetInfluences[2] = value;
-});
-gui.add(control, 'Smile', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[3] = value;
-});
-gui.add(control, 'LookLeft', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[4] = value;
-});
-gui.add(control, 'LookRight', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[5] = value;
-});
-gui.add(control, 'Lookup', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[6] = value;
-});
-gui.add(control, 'Lookdown', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[7] = value;
+mesh18.morphTargetInfluences[0] = value;
 });
 
 startButton.onclick = function StartAnimation() {
-setTimeout(function() {head.morphTargetInfluences[0] = 1;}, 500);
-setTimeout(function() {head.morphTargetInfluences[0] = 0;}, 1000);
+setTimeout(function() {mesh18.morphTargetInfluences[0] = 1;}, 500);
+setTimeout(function() {mesh18.morphTargetInfluences[0] = 0;}, 1000);
 
           
          
@@ -142,23 +139,6 @@ if (runAnim) {
   */
 }
 
-resetButton.onclick = function ResetParameters() {
-    head.morphTargetInfluences[1] = 1;
-    setTimeout(function(){
-        head.morphTargetInfluences[1] = 0;
-}, 500);
-    
-// Set StartButton to Start  
-//startButton.innerHTML = 'Start';
-
-// Boolean for Stop Animation
-/*initAnim = true;
-runAnim = false;
-theta = 0;
-isPlay = false;
-render();
-*/
-}
 
 
                        gui.close();
