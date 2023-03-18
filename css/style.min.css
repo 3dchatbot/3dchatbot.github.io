@@ -20,6 +20,9 @@
 .menu-item1:hover>a {
     color: #39f0ba;
 }
+#menu-carbine-primary{
+    list-style-type: none;
+}
 .dashboard-section {
 	display: none;
 	flex-direction: column;
