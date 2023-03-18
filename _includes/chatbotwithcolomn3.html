@@ -15,7 +15,12 @@
 
 </div>
 <div id="body" style="height:331px" class="card-body msg_card_body">
-
+	<script>
+        const image2 = `<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">`;
+const image1 = `<div class="img_cont_msg">
+<img src="/media/dude3.jpeg" class="rounded-circle user_img_msg">
+    </div>`;
+</script>
 <div id="data"></div>
 <div style="display: none;" id="formats">Format: start recording to see sample rate</div>
 <p style="display: none;"><strong>Recordings:</strong></p>
@@ -32,12 +37,11 @@ Your browser does not support the audio element.
 <div class="card-footer">
 <div class="input-group">
 <div style="display: none;" class="input-group-append">
-<span id="recordButton" class="input-group-text attach_btn"><i class="fas fa-microphone"></i></span>
-<span style="display: none;" id="stopButton" class="input-group-text attach_btn"><i class="fa fa-microphone-slash" aria-hidden="true"></i></span>
 <span style="display: none;" id="pauseButton" class="input-group-text attach_btn"><i class="fa fa-microphone-slash" aria-hidden="true"></i></span>
 
 </div>
-<button style="color: black;" id="recordvoice"><i class="fas fa-microphone"></i></button>
+<button id="recordButton" style="color: black;"><i class="fas fa-microphone"></i></button>
+<button id="stopButton" style="color: rgb(255, 0, 0);display: none;"><i class="fas fa-microphone"></i></button>
 <textarea style="width: 25%;" name=""  id="userInput" class="form-control type_msg" placeholder="Type your message..."></textarea>
 <button style="color: black;" id="playtrack"><i class="fas fa-location-arrow"></i></button>
 </div>

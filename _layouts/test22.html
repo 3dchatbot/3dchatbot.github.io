@@ -10,13 +10,25 @@
 	</head>
 
 	<body>
-		
+		<script>
+			    const image2 = `<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">`;
+        const image1 = `<div class="img_cont_msg">
+    <img src="/media/dude3.jpeg" class="rounded-circle user_img_msg">
+            </div>`;
+		</script>
+		            <div id="data"></div>
+            <div style="display: none;" id="formats">Format: start recording to see sample rate</div>
+            <p style="display: none;"><strong>Recordings:</strong></p>
+            <ol style="display: none;" id="recordingsList"></ol>
+
+
 		{% include chatbotwithcolomn3.html %}
         {% include script3.html %}
 <div style="color: black;" id="startButtonId">Open Mouth</div>
 <div style="color: black;" id="resetButtonId">Blink</div>
 <div style="color: black;" id="playtrack">play</div>
 <button onclick="dude()">Click me</button>
+<script src="/js/app.js"></script>
 <script src="/js/recorder.js"></script>
 	</body>
 </html>
