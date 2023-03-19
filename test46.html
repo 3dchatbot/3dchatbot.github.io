@@ -81,14 +81,11 @@ ctxr.fillText("Hello World", 10, 50);
                         canvasContext.fillRect(x, canvasHeight - barHeight, barWidth, barHeight);
                         x += barWidth + 2;
                         var s="200";
-//Converting String into int using Integer.parseInt()
-let d = parseInt(frequencyData[i]);
-                        //document.getElementById("v1").innerHTML=canvasHeight - barHeight;
-                        var str = d;
-                        ctxr.clearRect(0, 0, canvasu.width, canvasu.height);
-                        ctxr.fillText(dude45);
 
-                        document.getElementById("v1").innerHTML=(str*342)+45;
+                        ctxr.clearRect(0, 0, canvasu.width, canvasu.height);
+                        ctxr.fillText(frequencyData[i], 10, 50);
+
+                        document.getElementById("v1").innerHTML=dude45;
                       //  document.getElementById("v1").innerHTML=dude45;
                     }
                   //  console.log(dude45);
