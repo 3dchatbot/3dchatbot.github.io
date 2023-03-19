@@ -37,7 +37,7 @@ var light = new THREE.AmbientLight(0xf6e86d);
 scene.add(light);
 
 new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
+					.setPath( '/textures/equirectangular/' )
 					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
 
                         texture.mapping = THREE.EquirectangularReflectionMapping;

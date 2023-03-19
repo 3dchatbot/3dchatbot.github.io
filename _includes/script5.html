@@ -4,14 +4,14 @@
 <script type="importmap">
 {
 "imports": {
-"three": "../build/three.module.js",
-"three/addons/": "./jsm/"
+"three": "/build/three.module.js",
+"three/addons/": "/jsm/"
 }
 }
 </script>
 <script type="module">
 import * as THREE from 'three';
-import { OrbitControls } from "../js/OrbitControls.js";
+import { OrbitControls } from "/js/OrbitControls.js";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
@@ -43,7 +43,7 @@ var light = new THREE.AmbientLight(0xf6e86d);
 scene.add(light);
 
 new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
+					.setPath( '/textures/equirectangular/' )
 					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
 
                         texture.mapping = THREE.EquirectangularReflectionMapping;
