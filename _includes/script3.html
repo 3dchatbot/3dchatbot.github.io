@@ -25,6 +25,7 @@
             import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
 			let camera, scene, renderer, analyser;
+            var mesh18;
 
 			init();
 			render();
@@ -41,6 +42,7 @@
 
 
 				const container = document.createElement( 'div' );
+                container.setAttribute("id", "Div1");
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.25, 20 );
@@ -50,7 +52,7 @@
 
 				scene = new THREE.Scene();
                 scene.add(light);
-				
+				console.log(scene);
 
 						// model
                         const listener = new THREE.AudioListener();
