@@ -24,7 +24,7 @@
 			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
             import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
-			let camera, scene, renderer;
+			let camera, scene, renderer, analyser;
 
 			init();
 			render();
@@ -33,7 +33,7 @@
 
 			function init() {
                 
-               
+                const fftSize = 128;
  // Buttons startButton and resetButton
  var startButton = document.getElementById( 'startButtonId' );
  var resetButton = document.getElementById( 'resetButtonId' );
@@ -217,8 +217,24 @@ audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( 
 	sound.setLoop( false );
 	sound.setVolume( 0.5 );
 	sound.play();
+    const analyser1 = new THREE.AudioAnalyser( sound, 32 );
+    
+
     
 }); 
+
+
+
+//const analyser1 = new THREE.AudioAnalyser( sound, 32 );
+
+analyser = new THREE.AudioAnalyser( sound, fftSize );
+
+// get the average frequency of the sound
+const data5 = analyser.getAverageFrequency();
+// get the average frequency of the sound
+console.log( analyser1.data);
+
+
                 };
               
                 };
@@ -238,10 +254,13 @@ audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( 
 			}
 
 			//
+     
 
 			function render() {
                 requestAnimationFrame(render);
+  
 				renderer.render( scene, camera );
+                //analyser.getFrequencyData();
                 
 
 			}
