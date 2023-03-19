@@ -582,7 +582,7 @@ export class NodeEditor extends EventDispatcher {
 			const filename = button.getExtra();
 
 			const loader = new Loader( Loader.OBJECTS );
-			const json = await loader.load( `./jsm/node-editor/examples/${filename}.json`, ClassLib );
+			const json = await loader.load( `/jsm/node-editor/examples/${filename}.json`, ClassLib );
 
 			this.loadJSON( json );
 

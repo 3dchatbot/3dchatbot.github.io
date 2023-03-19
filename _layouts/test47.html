@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include head5.html %}
-    {% include script5.html %}
+   
     <title>Hello!</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="stylesheet" href="/css/style11.css">
-    <link rel="stylesheet" href="/css/chatbot1.css">
+  
+  	<link type="text/css" rel="stylesheet" href="/css/chatbot1.css">
     <script src="/js/script3.js" defer></script>
   </head>  
   <body>
     
-    <div id="gpt3headerimage"></div>
-    <canvas></canvas>
-    {% include chatbotwithcolomn3.html %}
+   
+    <canvas style="z-index: 400;"></canvas>
+
 <!--     <audio controls crossorigin="anonymous" src="https://cdn.glitch.com/fa82d77c-94cf-4d6b-934e-fcecba12936b%2FRadiohead%20-%20The%20Numbers%20Jonny%2C%20Thom%20%26%20a%20CR78.mp3?v=1587909838641"></audio> -->
 <!--     <audio controls crossorigin="anonymous" src="https://cdn.glitch.com/fa82d77c-94cf-4d6b-934e-fcecba12936b%2FStimmhorn%20-%20Triohatala.mp3?v=1587909837444"></audio> -->
 <!--     <audio controls crossorigin="anonymous" src="https://cdn.glitch.com/fa82d77c-94cf-4d6b-934e-fcecba12936b%2FTelephone%20and%20Rubber%20Band%20-%20Penguin%20Cafe%20Orchestra.mp3?v=1587909834863"></audio> -->
     <audio controls crossorigin="anonymous" src="/media/download2.mp3"></audio>
 <!--     <audio controls crossorigin="anonymous" src="https://cdn.glitch.com/fa82d77c-94cf-4d6b-934e-fcecba12936b%2FMorphine%20-%20I'm%20Free%20Now.mp3?v=1587909831046"></audio> -->
-    
+<div id="gpt3headerimage"></div>
     
   </body>
-  {% include scripts1.html %}
-<script src="/js/index.js"></script>
-<script src="/js/recorder.js"></script>
+	{% include chatbotwithcolomn3.html %}
+        {% include script3.html %}
+<div style="color: black;" id="startButtonId">Open Mouth</div>
+<div style="color: black;" id="resetButtonId">Blink</div>
+<div style="color: black;" id="playtrack">play</div>
+<button onclick="dude()">Click me</button>
 <script src="/js/app.js"></script>
+<script src="/js/recorder.js"></script>
+	</body>
 </html>
