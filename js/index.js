@@ -15,7 +15,7 @@ window.onload = async (event) => {
   // check if user is already logged in and update the global userWalletAddress variable
   window.userWalletAddress = window.localStorage.getItem("userWalletAddress");
 
-  document.getElementById("year").innerHTML = new Date().getFullYear();
+  window.getElementById("year").innerHTML = new Date().getFullYear();
 
   // show the user dashboard
   showUserDashboard();
