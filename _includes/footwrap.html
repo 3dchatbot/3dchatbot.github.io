@@ -34,18 +34,9 @@
     <a href="/legal/master-subscription-agreement/">Master Subscription Agreement</a> </div>
     <img src="/media/footer-logo1.svg" />
     <div class="icons">
-    <a href="https://twitter.com/SentinelOne" rel="noopener noreferrer" target="_blank">
-    <img src="/media/social-twitter-white.svg" />
-    </a>
-    <a href="https://www.facebook.com/SentinelOne/" rel="noopener noreferrer" target="_blank">
-    <img src="/media/social-facebook-white.svg" />
-    </a>
-    <a href="https://www.linkedin.com/company/sentinelone/" rel="noopener noreferrer" target="_blank">
-    <img src="/media/social-linkedin-white.svg" />
-    </a>
-    <a href="https://goo.gl/e5C9f4" rel="noopener noreferrer" target="_blank">
-    <img src="/media/social-youtube-white.svg" />
-    </a>
+    {% for socialicon in site.data.socialicons %}<a href="{{ socialicon.link }}" rel="noopener noreferrer" target="_blank">
+    <img src="{{ socialicon.icon }}" />
+    </a>{% end for %}
     </div>
     </div>
     </footer>
