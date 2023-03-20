@@ -1,7 +1,3 @@
-<script>//var object5 = "I'm going to fuck you silly";</script>
-<script>//var object5 = "I'm going to fuck you silly";</script>
-		<!-- Import maps polyfill -->
-		<!-- Remove this when import maps will be widely supported -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.js"></script>  
 		<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
@@ -25,8 +21,7 @@
 			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
             import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
-			let camera, scene, renderer, analyser, analyser2, bufferLength, frequencyData;
-            var mesh18;
+			let camera, scene, renderer;
 
 			init();
 			render();
@@ -125,30 +120,6 @@ startButton.onclick = function StartAnimation() {
 setTimeout(function() {mesh18.morphTargetInfluences[0] = 1;}, 500);
 setTimeout(function() {mesh18.morphTargetInfluences[0] = 0;}, 1000);
 
-          
-         
-
-    
-   
-    /*
-if (initAnim) {
-  initAnim = false;
-  runAnim = true;
-  theta = 0;
-}
-// Start and Pause 
-if (runAnim) { 
-  startButton.innerHTML = 'Pause';
-  runAnim = false;
-  isPlay = true;
-  animate();
-  } 
-  else {
-        startButton.innerHTML = 'Restart';
-        runAnim = true;
-        isPlay = false;
-  }
-  */
 }
 
 
@@ -215,47 +186,20 @@ if (runAnim) {
                 const sound = new THREE.Audio( listener );
                 const audioLoader = new THREE.AudioLoader();
 audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( buffer ) {
-    //sound.start(0);
-//	sound.setBuffer( buffer );
-//	sound.setLoop( false );
-//	sound.setVolume( 0.5 );
-//	sound.play();
- 
-//const ctx = new AudioContext();
 const audioSrc1 = `https://nodetts.onrender.com/?text=${objecttext}`;
-
-
-//const analyser1a = new THREE.AudioAnalyser( sound, 32 );
-
-//const data = analyser1a.getAverageFrequency();
-
 document.getElementById("audio404").src = audioSrc1;
-
 var audio401 = document.getElementById("audio404");
-
 audio401.play();
-//analyser1a.fftSize = 256;
-//const bufferLength = analyser1a.frequencyBinCount;
-//const frequencyData = new Uint8Array(bufferLength);
-
+if (audio401.paused) {
+    console.log("audio is stopped");
+    setTimeout(draw1, 1);
+    setTimeout(initAudio, 1);
+    //DO SOMETING...
+    clearInterval(draw1);
+     clearInterval(initAudio);
+}
 console.log(audioSrc1);
-//initAudio();
-
-
-    
-
-}); 
-
-
-//const analyser1 = new THREE.AudioAnalyser( sound, 32 );
-
-analyser = new THREE.AudioAnalyser( sound, fftSize );
-
-// get the average frequency of the sound
-const data5 = analyser.getAverageFrequency();
-// get the average frequency of the sound
-//console.log( analyser1.data);
-
+});
 
                 };
               
@@ -275,26 +219,12 @@ const data5 = analyser.getAverageFrequency();
 
 			}
 
-			//
-     
-            function draw22() {
-    console.log('i eat shit');
-    //console.log(analyser2.data);
-    analyser2.getFrequencyData(frequencyData);
-  let frequencyWidth = Math.ceil(canvas.width / bufferLength);
-  for (let i = 0; i < bufferLength; i++) {
-console.log('i eat shit');
-
-  }
- 
-  requestAnimationFrame(draw22);
-}
 
 			function render() {
                 requestAnimationFrame(render);
   
 				renderer.render( scene, camera );
-                //analyser.getFrequencyData();
+               
                 
 
 			}
