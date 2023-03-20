@@ -15,6 +15,8 @@ window.onload = async (event) => {
   // check if user is already logged in and update the global userWalletAddress variable
   window.userWalletAddress = window.localStorage.getItem("userWalletAddress");
 
+  document.getElementById("year").innerHTML = new Date().getFullYear();
+
   // show the user dashboard
   showUserDashboard();
 };
@@ -124,3 +126,5 @@ document.querySelector(".login-btn").addEventListener("click", loginWithEth);
 
 // when the user clicks the logout button run the logout function
 document.querySelector(".logout-btn").addEventListener("click", logout);
+
+
