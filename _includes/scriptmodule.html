@@ -32,7 +32,7 @@ const parent  = document.getElementById('3dhead1');
         scene = new THREE.Scene();
         scene.add( helper );
         new RGBELoader()
-            .setPath( 'textures/equirectangular/' )
+            .setPath( '/textures/equirectangular/' )
             .load( 'quarry_01_1k.hdr', function ( texture ) {
 
                 texture.mapping = THREE.EquirectangularReflectionMapping;

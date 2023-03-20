@@ -25127,7 +25127,7 @@
             this.headSmile = 0,
             this.background = null,
             this.speech = new Vh(!0,this.onSpeechStart,this.onSpeechStop,this.onSpeechComplete),
-            this.head = new Hh("assets/glb/will.glb",this.onHeadLoaded),
+            this.head = new Hh("assets/glb/will1.glb",this.onHeadLoaded),
             this.enable(),
             this.buttons.ButtonLoading.setLoading(!0),
             this.buttons.ButtonLoading.show()

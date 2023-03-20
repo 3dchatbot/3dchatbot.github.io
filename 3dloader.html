@@ -56,7 +56,7 @@
 				scene = new THREE.Scene();
 
 				new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
+					.setPath( '/textures/equirectangular/' )
 					.load( 'quarry_01_1k.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
@@ -69,7 +69,7 @@
 						// model
 
 						const loader = new GLTFLoader().setPath( '/assets/glb/' );
-						loader.load( 'will.glb', function ( gltf ) {
+						loader.load( 'will1.glb', function ( gltf ) {
 
 							gltf.scene.scale.set( 10.0, 10.0, 10.0 );
 

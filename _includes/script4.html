@@ -30,12 +30,12 @@ camera.position.set( 0, 0, 10 );
 scene = new THREE.Scene();
 clock = new THREE.Clock();
 new RGBELoader()
-.setPath( 'textures/equirectangular/' )
+.setPath( '/textures/equirectangular/' )
 .load( 'quarry_01_1k.hdr', function ( texture ) {
 texture.mapping = THREE.EquirectangularReflectionMapping;
 scene.environment = texture;
 const loader = new GLTFLoader().setPath( '/assets/glb/' );
-loader.load( 'will.glb', function ( gltf ) {
+loader.load( 'will1.glb', function ( gltf ) {
 gltf.scene.scale.set( 10.0, 10.0, 10.0 );
 const mesh = gltf.scene.children[ 0 ];
 scene.add( mesh );

@@ -28,7 +28,7 @@ gltfLoader.setDRACOLoader(dracoLoader)
 let mixer = null
 
 gltfLoader.load(
-    '/assets/glb/will.glb',
+    '/assets/glb/will1.glb',
     (gltf) =>
     {
         scene.add(gltf.scene)
