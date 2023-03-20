@@ -181,9 +181,6 @@ setTimeout(function() {mesh18.morphTargetInfluences[0] = 0;}, 1000);
 }else { var objecttext = obj.traits.text[0].value};
                 let botHtml = '<div class="d-flex justify-content-start mb-4">'+'<div class="img_cont_msg">'+image2+'</div>'+'<div class="msg_cotainer">'+objecttext+'</div>'+'</div>'
                 document.querySelector('#body').innerHTML+= botHtml;
-                const listener = new THREE.AudioListener();
-                camera.add( listener );
-                const sound = new THREE.Audio( listener );
                 const audioLoader = new THREE.AudioLoader();
 audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( buffer ) {
 const audioSrc1 = `https://nodetts.onrender.com/?text=${objecttext}`;
