@@ -1,12 +1,3 @@
-// -- MICROPHONE
-// document.querySelector("body").onclick = () => {
-//   navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-//     let source = audioContext.createMediaStreamSource(stream);
-//     run(source);
-//   });
-// };
-
-// 2. grab audio element
 let audioElement = document.querySelector('audio');
 audioElement.addEventListener('play', initAudio);
 
