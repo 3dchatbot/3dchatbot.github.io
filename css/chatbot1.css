@@ -1,6 +1,6 @@
 #chat1{
     position: fixed !important;
-    right: 50%;
+  /*  right: 50%;*/
     bottom: 0px;
     width: 50%;
     /* margin-right: -50%; */
@@ -134,3 +134,30 @@
     align-items: stretch;
     width: 100%;
 }
+@media only screen and (max-width: 600px) {
+    .chat2 {
+        opacity: 0.5;
+        position: absolute;
+        z-index: 1000 !important;
+        overflow: hidden !important;
+        flex: 0 0 auto;
+        width: 100%;
+        left: 0%;
+        height: 100%;
+        background-color: rgba(54, 25, 25, .00004);
+    }
+    #chat1{
+        position: fixed !important;
+        right: 0%;
+        bottom: 0px;
+        width: 100%;
+        left: 0%;
+        /* margin-right: -50%; */
+        /* height: 40px; */
+        /* background-color: rgb(10, 10, 10); */
+        padding: 5px;
+        z-index: 4;
+        display: flex;
+    
+    }
+  }
