@@ -125,17 +125,17 @@ controls.addEventListener( 'change', render ); // use if there is no animation l
 controls.minDistance = 2;
 controls.maxDistance = 2;
 controls.target.set( 0, 0, 2 );
-controls.noPan = true;
+controls.noPan = false;
 //controls.maxDistance = controls.minDistance = yourfixeddistnace;
-controls.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0};  
-controls.noKeys = true;
-controls.noRotate = true;
-controls.noZoom = true;
-controls.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0};
+//controls.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0};  
+controls.noKeys = false;
+controls.noRotate = false;
+controls.noZoom = false;
+//controls.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0};
 //controls.minPolarAngle = 0; // 1.5 * Math.PI / 12; 
 //controls.maxPolarAngle = 0; // 1.5 * Math.PI / 3;
 
-controls.minAzimuthAngle = 0;
+controls.minAzimuthAngle = 360;
 controls.maxAzimuthAngle = 0;
 controls.maxPolarAngle = Math.PI / 2;
 controls.minPolarAngle = Math.PI / 2;
