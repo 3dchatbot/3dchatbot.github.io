@@ -153,35 +153,62 @@ controls2.dynamicDampingFactor = 0.3;
 controls2.mouseButtons = {LEFT: 0,MIDDLE: 0,RIGHT: 0}; 
 controls2.update();
 playtrack.onclick = function playtrack1() {
-const image2 = `<img src="/media/d1.jpg" class="rounded-circle user_img_msg">`;
-const image1 = `{% include image2.html %}`;
-let xhr = new XMLHttpRequest();
-var userMessage = document.querySelector("#userInput").value;
-let userHtml = '<div class="d-flex justify-content-end mb-4">'+'<div class="msg_cotainer_send">'+userMessage+'</div>'+image1+'</div>'
-document.querySelector('#body').innerHTML+= userHtml;
-xhr.open(`GET`, `https://chatapi-vd80.onrender.com/test123/${userMessage}`);
-xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhr.send(`messageValue=${userMessage}`);
-xhr.onload = function () {
-var obj = JSON.parse(this.responseText);
-var obj1q = JSON.stringify(this.responseText);
-let botHtml = '<div class="d-flex justify-content-start mb-4">'+'<div class="img_cont_msg">'+image2+'</div>'+'<div class="msg_cotainer">'+obj.traits.text[0].value+'</div>'+'</div>'
-document.querySelector('#body').innerHTML+= botHtml;
-var object5a = obj.traits.text[0].value;
-const listener = new THREE.AudioListener();
-camera.add( listener );
-const sound = new THREE.Audio( listener );
-const audioLoader = new THREE.AudioLoader();
-audioLoader.load( `https://nodetts.onrender.com/?text=${object5a}`, function( buffer ) {
-sound.setBuffer( buffer );
-sound.setLoop( false );
-sound.setVolume( 0.5 );
-sound.play();
+                         // create a global audio source
+                const image2 = `<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">`;
+                const image1 = `{% include image2.html %}`;
+                let xhr = new XMLHttpRequest();
+                var userMessage = document.querySelector("#userInput").value;
+                let userHtml = '<div class="d-flex justify-content-end mb-4">'+'<div class="msg_cotainer_send">'+userMessage+'</div>'+image1+'</div>'
+                document.querySelector('#body').innerHTML+= userHtml;
+                xhr.open(`GET`, `https://chatapi-vd80.onrender.com/test123/${userMessage}`);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(`messageValue=${userMessage}`);
+                xhr.onload = function () {
+                var obj = JSON.parse(this.responseText);
+                console.log(JSON.stringify(obj.traits));
+                var objlength = JSON.stringify(obj.traits);
+                var obj1q = JSON.stringify(this.responseText);
+                if (objlength.length < 3) {
+   var objecttext = "I'm sorry, but I didn't understand the question. Please try again";
+   console.log(objecttext+'dfgdfgdfgdfgdgdgdgdgf'); 
+}else { var objecttext = obj.traits.text[0].value};
+                let botHtml = '<div class="d-flex justify-content-start mb-4">'+'<div class="img_cont_msg">'+image2+'</div>'+'<div class="msg_cotainer">'+objecttext+'</div>'+'</div>'
+                document.querySelector('#body').innerHTML+= botHtml;
+                const listener = new THREE.AudioListener();
+                camera.add( listener );
+                const sound = new THREE.Audio( listener );
+                const audioLoader = new THREE.AudioLoader();
+audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( buffer ) {
+    //sound.start(0);
+	sound.setBuffer( buffer );
+	sound.setLoop( false );
+	sound.setVolume( 0.5 );
+	sound.play();
+    const analyser1 = new THREE.AudioAnalyser( sound, 32 );
+    
+
+    
 }); 
-};
-};
-window.addEventListener( 'resize', onWindowResize );
-}
+
+
+
+//const analyser1 = new THREE.AudioAnalyser( sound, 32 );
+
+analyser = new THREE.AudioAnalyser( sound, fftSize );
+
+// get the average frequency of the sound
+const data5 = analyser.getAverageFrequency();
+// get the average frequency of the sound
+console.log( analyser1.data);
+
+
+                };
+              
+                };
+				window.addEventListener( 'resize', onWindowResize );
+
+			}
+
 function onWindowResize() {
 camera.aspect = window.innerWidth / window.innerHeight;
 camera.updateProjectionMatrix();
