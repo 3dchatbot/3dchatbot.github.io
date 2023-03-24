@@ -194,7 +194,7 @@ audioLoader.load( `https://nodetts.onrender.com/?text=${objecttext}`, function( 
 
 //const analyser1 = new THREE.AudioAnalyser( sound, 32 );
 
-analyser = new THREE.AudioAnalyser( sound, fftSize );
+analyser = new THREE.AudioAnalyser( sound, 32 );
 
 // get the average frequency of the sound
 const data5 = analyser.getAverageFrequency();
