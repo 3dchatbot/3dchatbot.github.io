@@ -42,10 +42,11 @@
 }
 .card4 {
     height: 500px;
+    margin-top: 75px;
     width: 100%;
     border-radius: 15px !important;
     margin-bottom: -459px;
-    /*background-color: rgba(0,0,0,0.4) !important;*/
+    /* background-color: rgba(0,0,0,0.4) !important;*/
 }
 .user_img {
     height: 70px;
