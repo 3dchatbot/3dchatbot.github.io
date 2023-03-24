@@ -416,10 +416,22 @@ console.log( analyser1.data);
 };
 window.addEventListener( 'resize', onWindowResize );
 }
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
 function onWindowResize() {
-camera.aspect = container.innerWidth / container.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize($(container).width(), $(container).height());
+	const canvas = document.getElementById("chat3");
+      // look up the size the canvas is being displayed
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+
+      if (canvas.width !== width || canvas.height !== height) {
+        renderer.setSize(width, height, true);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      }
 render();
 }
 function render() {

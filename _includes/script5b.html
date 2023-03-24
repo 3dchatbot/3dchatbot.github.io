@@ -21,7 +21,7 @@ function init() {
 var startButton = document.getElementById( 'startButtonId' );
 var resetButton = document.getElementById( 'resetButtonId' );
 var playtrack = document.getElementById( 'playtrack' );
-const container = document.getElementById("chat3");
+var container = document.getElementById("chat3");
 
 renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize($(container).width(), $(container).height());
@@ -419,9 +419,10 @@ console.log( analyser1.data);
 window.addEventListener( 'resize', onWindowResize );
 }
 function onWindowResize() {
-camera.aspect = window.innerWidth / window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize( window.innerWidth, window.innerHeight );
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
 render();
 }
 function render() {
