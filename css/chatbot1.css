@@ -134,6 +134,15 @@
     align-items: stretch;
     width: 100%;
 }
+#chat3 {
+    position: fixed !important;
+    right: 0px;
+    width: 40%;
+    height: 100%;
+    /*background-color: rgb(10, 10, 10);*/
+    /*padding: 5px;*/
+    z-index: 4000;
+}
 @media only screen and (max-width: 600px) {
     .chat2 {
         opacity: 0.5;
@@ -159,5 +168,15 @@
         z-index: 4;
         display: flex;
     
+    }
+    #chat3 {
+        position: fixed !important;
+        right: 0%;
+
+        width: 100%;
+        height: 100%;
+        /*background-color: rgb(10, 10, 10);*/
+        /*padding: 5px;*/
+        z-index: 4000;
     }
   }

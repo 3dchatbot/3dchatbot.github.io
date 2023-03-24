@@ -23,14 +23,9 @@ var resetButton = document.getElementById( 'resetButtonId' );
 var playtrack = document.getElementById( 'playtrack' );
 const container = document.getElementById("chat3");
 
-renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
-renderer.setClearColor( 0x000000, 0 );
-renderer.setPixelRatio( container.devicePixelRatio );
+renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize($(container).width(), $(container).height());
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1;
-renderer.outputEncoding = THREE.sRGBEncoding;
-container.appendChild( renderer.domElement );
+container.appendChild(renderer.domElement);
 //renderer.setSize( window.innerWidth, window.innerHeight );
 camera = new THREE.PerspectiveCamera( 56, container.clientWidth /  container.clientHeight, 0.15, 15 );
 //camera = new THREE.PerspectiveCamera();
@@ -113,7 +108,14 @@ render();
 });
 } );
 
-
+renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
+renderer.setClearColor( 0x000000, 0 );
+renderer.setPixelRatio( container.devicePixelRatio );
+renderer.setSize($(container).width(), $(container).height());
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1;
+renderer.outputEncoding = THREE.sRGBEncoding;
+container.appendChild( renderer.domElement );
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', render ); // use if there is no animation loop
 controls.minDistance = 2;
@@ -417,9 +419,9 @@ console.log( analyser1.data);
 window.addEventListener( 'resize', onWindowResize );
 }
 function onWindowResize() {
-camera.aspect = container.innerWidth / container.innerHeight;
+camera.aspect = window.innerWidth / window.innerHeight;
 camera.updateProjectionMatrix();
-renderer.setSize($(container).width(), $(container).height());
+renderer.setSize( window.innerWidth, window.innerHeight );
 render();
 }
 function render() {
