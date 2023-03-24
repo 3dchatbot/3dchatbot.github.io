@@ -53,7 +53,7 @@ loadingScreen.addEventListener( 'transitionend', onTransitionEnd );
 
 } );
 const loader = new GLTFLoader(loadingManager).setPath( '/assets/glb/' );
-loader.load( '123d.glb', function ( gltf ) {
+loader.load( '123a.glb', function ( gltf ) {
 gltf.scene.scale.set( 3, 3, 3 );
 const mesh = gltf.scene.children[ 0 ];
 scene.add( mesh );
