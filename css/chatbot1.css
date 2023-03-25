@@ -121,10 +121,11 @@
 }
 .justify-content-end {
     justify-content: flex-end!important;
-    width: 30%;
+    width: 90%;
 }
 .justify-content-start {
     justify-content: flex-start!important;
+    width: 90%;
 }
 .input-group {
     position: relative;
