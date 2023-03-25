@@ -167,7 +167,8 @@
         left: 0%;
         /* margin-right: -50%; */
         /* height: 40px; */
-        /* background-color: rgb(10, 10, 10); */
+        opacity: 70%;
+        background-color: rgb(10, 10, 10);
         padding: 5px;
         z-index: 4;
         display: flex;

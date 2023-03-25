@@ -5,16 +5,12 @@
 .menu-item1>a {
     position: relative;
     z-index: 2;
-    -webkit-transition: color .3s ease-in-out;
-    -o-transition: color .3s ease-in-out;
-    transition: color .3s ease-in-out;
     font-size: 15px;
     font-weight: 500;
     letter-spacing: .3px;
     display: block;
     text-decoration: none;
     padding: 7px 26px 7px 12px;
-    color: #fff;
     white-space: nowrap
 }
 .menu-item1:hover>a {
