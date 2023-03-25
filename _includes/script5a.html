@@ -13,6 +13,7 @@ import * as THREE from 'three';
 import { OrbitControls } from "/js/OrbitControls.js";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import {BVHLoader} from '/jsm/loaders/BVHLoader.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 let camera, scene, renderer;
 init();
@@ -32,10 +33,18 @@ renderer.toneMappingExposure = 1;
 renderer.outputEncoding = THREE.sRGBEncoding;
 container.appendChild( renderer.domElement );
 //renderer.setSize( window.innerWidth, window.innerHeight );
-camera = new THREE.PerspectiveCamera( 56, container.clientWidth /  container.clientHeight, 0.15, 15 );
+camera = new THREE.PerspectiveCamera( 48, container.clientWidth /  container.clientHeight, 0.1, 4.1 );
+
+
+//camera = new THREE.PerspectiveCamera(50, container.innerWidth/container.innerHeight, 0.1, 1000 ); // Specify camera type like this
+camera.position.set(0.22,0.36,4); // Set position like this
+//camera.lookAt((0,0,0)); 
 //camera = new THREE.PerspectiveCamera();
-camera.position.set( 0, 0, 0 );
+
+//camera = new THREE.PerspectiveCamera();
+//camera.position.set( 0, 0, 0 );
 /*
+
 camera.position.x = 0;
 camera.position.y = 0;
 camera.position.z = 320;
@@ -159,11 +168,13 @@ var audioContext //audio context to help us record
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
+var server5Button = document.getElementById("server5a");
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 pauseButton.addEventListener("click", pauseRecording);
+server5Button.addEventListener("click", server5);
 
 function startRecording() {
 	console.log("recordButton clicked");
@@ -240,6 +251,10 @@ function pauseRecording(){
 		pauseButton.innerHTML="Pause";
 
 	}
+}
+
+function server5(){
+	console.log(camera);
 }
 
 function stopRecording() {
@@ -443,4 +458,7 @@ function onTransitionEnd( event ) {
 event.target.remove();
 
 }
+</script>
+<script>
+	console.log(scene)
 </script>
