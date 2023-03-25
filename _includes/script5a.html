@@ -168,13 +168,13 @@ var audioContext //audio context to help us record
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
-var server5Button = document.getElementById("server5a");
+
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 pauseButton.addEventListener("click", pauseRecording);
-server5Button.addEventListener("click", server5);
+
 
 function startRecording() {
 	console.log("recordButton clicked");

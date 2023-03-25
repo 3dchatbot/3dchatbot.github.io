@@ -109,6 +109,7 @@
 }
 .msg_card_body {
     overflow-y: auto;
+    opacity: 40%;
 }
 .user_img_msg {
     height: 40px;
