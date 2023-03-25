@@ -6,10 +6,6 @@
   link : https://youtube.com/
   icon : /media/social-youtube-white.svg
 
-- type : google
+- type : discord
   link : https://google.com
-  icon : /media/social-google-white.svg
-
-- type : google
-  link : https://google.com
-  icon : /media/social-google-white.svg
+  icon : /media/icons8-discord.svg
