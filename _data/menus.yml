@@ -1,5 +1,12 @@
 menuroot:
 - menuroot1:
+  name: dude
+  link: sdfsdfds
+- menuroot1:
+  name: sdsdfdsf
+  link: /platform/
+menutest:
+- menuroot2:
   name: Platform
   link: /platform/
   submenuitems:
@@ -73,7 +80,7 @@ menuroot:
           description : Welcome to Native <br>and Open XDR
           icon: /media/SingularityIdentity_Icon_Nav_36x36@2x.png
           link: /platform/
-- menuroot1:
+- menuroot2:
   name: dsff
   link: /platform/
   submenuitems:

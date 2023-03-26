@@ -1,6 +1,7 @@
     {% assign amount = 0 %}
     {% for menuroot1 in site.data.menus.menuroot %}
     <!-- {% assign amount = amount | plus:1 %}{{ amount }} -->
+    {% if menuroot1.submenuitems %}
     <li class="menu-root-item active ">
     <a href="{{menuroot1.link}}" target="">{{menuroot1.name}}</a>
     <div class="mega">
@@ -36,4 +37,10 @@
     </div>
     <div class="hover-underlay"></div>
     </li>
+    {% else %}
+    <li style="/*padding: 13px 1px 0px 0px;*/" class="menu-item1">
+        <a href="{{menuroot1.link}}" target="">{{menuroot1.name}}</a>
+      </li>
+    {% endif %}
+  
     {% endfor %}
