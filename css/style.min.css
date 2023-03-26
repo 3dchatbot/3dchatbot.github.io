@@ -74,3 +74,6 @@ header.header .navigation .nav-frame .menu .menu-item1>a {
     align-items: center;
     height: 60px;
 }
+body.error404 header.header:hover .navigation .nav-frame .menu .menu-item1>a{
+    color: #fff;
+}
