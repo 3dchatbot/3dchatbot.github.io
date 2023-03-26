@@ -45,6 +45,20 @@ Your browser does not support the audio element.
 <textarea style="width: 70%;/* margin-right: 20px; */height: 130px;" name=""  id="userInput" class="form-control type_msg" placeholder="Type your message..."></textarea>
 <button style="color: black;" id="playtrack"><i class="fas fa-location-arrow"></i></button>
 </div>
+<div class="box">
+    <center><div id="value"></div> </center>
+</div>
+<div class="container1">
+<input type="range" min="0" max="360" value="0" class="slider" id="slider">
+</div>
+<script type="text/javascript">
+var	slider=document.getElementById("slider");
+var val=document.getElementById("value");
+val.innerHTML=slider.value;
+slider.oninput=function(){
+    val.innerHTML=this.value;
+}
+</script>
 </div>
 </div>
 <div style="display: none;">
@@ -54,4 +68,8 @@ Your browser does not support the audio element.
 <button style="color: black;" id="playtrack">play</button>
 <button onclick="dude()">Click me</button>
 </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
 <!--<button style="margin-top: 30px;" class="server5a" id="server5a">dude</button>-->
