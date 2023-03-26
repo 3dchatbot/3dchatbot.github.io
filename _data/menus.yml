@@ -1,16 +1,16 @@
 menuroot:
 - menuroot1:
   name: Who are Emersa
-  link: /index.html/#who
+  link: /#who
 - menuroot1:
   name: What We Do
-  link: /index.html/#do
+  link: /#do
 - menuroot1:
   name: Team
-  link: /index.html/#team
+  link: /#team
 - menuroot1:
   name: White Papers
-  link: /index.html/#whitepapers
+  link: /#whitepapers
 - menuroot1:
   name: Mint
   link: /mint/
