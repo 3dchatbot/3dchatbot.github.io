@@ -1,10 +1,19 @@
 menuroot:
 - menuroot1:
-  name: dude
-  link: sdfsdfds
+  name: Who are Emersa
+  link: /index.html/#who
 - menuroot1:
-  name: sdsdfdsf
-  link: /platform/
+  name: What We Do
+  link: /index.html/#do
+- menuroot1:
+  name: Team
+  link: /index.html/#team
+- menuroot1:
+  name: White Papers
+  link: /index.html/#whitepapers
+- menuroot1:
+  name: Mint
+  link: /mint/
 menutest:
 - menuroot2:
   name: Platform
