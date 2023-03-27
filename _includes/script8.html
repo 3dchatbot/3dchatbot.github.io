@@ -77,6 +77,11 @@ skeletonHelper = new THREE.SkeletonHelper(mesh);
         //skeletonHelper.visible = guiParams.showSkeleton;s
         scene.add(skeletonHelper);
 		skeletonHelper.visible = false;
+		console.log(skeletonHelper.bones)
+		skeletonHelper.bones[102].rotation.z = 76.8156;
+		skeletonHelper.bones[74].rotation.z = -76.8156;
+		//skeletonHelper.bones[102].rotation.y = 0.014726;
+		//skeletonHelper.bones[102].rotation.x = 0.012604;
 scene.add( mesh );
 mesh.scale.set(1,1,1);
 const head = mesh.getObjectByName( 'will' );
