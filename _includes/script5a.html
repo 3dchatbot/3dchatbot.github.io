@@ -13,41 +13,24 @@ import * as THREE from 'three';
 import { OrbitControls } from "/js/OrbitControls.js";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import {BVHLoader} from '/jsm/loaders/BVHLoader.js';
-import * as SkeletonUtils from '/jsm/utils/SkeletonUtils.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-
 let camera, scene, renderer;
-let skeletonHelper;
 init();
 render();
 function init() {
 var startButton = document.getElementById( 'startButtonId' );
 var resetButton = document.getElementById( 'resetButtonId' );
 var playtrack = document.getElementById( 'playtrack' );
-const container = document.getElementById("chat3");
+var container = document.getElementById("chat3");
 
-renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
-renderer.setClearColor( 0x000000, 0 );
-renderer.setPixelRatio( container.devicePixelRatio );
+renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize($(container).width(), $(container).height());
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1;
-renderer.outputEncoding = THREE.sRGBEncoding;
-container.appendChild( renderer.domElement );
+container.appendChild(renderer.domElement);
 //renderer.setSize( window.innerWidth, window.innerHeight );
-camera = new THREE.PerspectiveCamera( 48, container.clientWidth /  container.clientHeight, 0.1, 4.1 );
-
-
-//camera = new THREE.PerspectiveCamera(50, container.innerWidth/container.innerHeight, 0.1, 1000 ); // Specify camera type like this
-camera.position.set(0.22,0.36,-4); // Set position like this
-//camera.lookAt((0,0,0)); 
+camera = new THREE.PerspectiveCamera( 56, container.clientWidth /  container.clientHeight, 0.15, 15 );
 //camera = new THREE.PerspectiveCamera();
-
-//camera = new THREE.PerspectiveCamera();
-//camera.position.set( 0, 0, 0 );
+camera.position.set( 0, 0, 0 );
 /*
-
 camera.position.x = 0;
 camera.position.y = 0;
 camera.position.z = 320;
@@ -73,10 +56,6 @@ const loader = new GLTFLoader(loadingManager).setPath( '/assets/glb/' );
 loader.load( '123a.glb', function ( gltf ) {
 gltf.scene.scale.set( 1, 1, 1 );
 const mesh = gltf.scene.children[ 0 ];
-skeletonHelper = new THREE.SkeletonHelper(mesh);
-        //skeletonHelper.visible = guiParams.showSkeleton;s
-        scene.add(skeletonHelper);
-		skeletonHelper.visible = false;
 scene.add( mesh );
 mesh.scale.set(1,1,1);
 const head = mesh.getObjectByName( 'will' );
@@ -124,20 +103,19 @@ resetButton.onclick = function ResetParameters() {
 head.morphTargetInfluences[1] = 1;
 setTimeout(function(){head.morphTargetInfluences[1] = 0;}, 500);
 }
-document.getElementById ("slider" ).addEventListener( "input", function (e) {
-
-//mesh.rotation.y = THREE.MathUtils.degToRad( e.target.value );
-mesh.rotation.y = e.target.value;
-render();
-
-} );
-
 gui.close();
 render();
 });
 } );
 
-
+renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
+renderer.setClearColor( 0x000000, 0 );
+renderer.setPixelRatio( container.devicePixelRatio );
+renderer.setSize($(container).width(), $(container).height());
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1;
+renderer.outputEncoding = THREE.sRGBEncoding;
+container.appendChild( renderer.domElement );
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', render ); // use if there is no animation loop
 controls.minDistance = 2;
@@ -184,12 +162,10 @@ var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
 
-
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 pauseButton.addEventListener("click", pauseRecording);
-
 
 function startRecording() {
 	console.log("recordButton clicked");
@@ -254,47 +230,6 @@ function startRecording() {
 	});
 }
 
-var scrollTimer = -1;
-
-
-window.addEventListener('scroll',(event) => {
-    console.log('Scrolling...');
-	if (scrollTimer != -1)
-        clearTimeout(scrollTimer);
-
-      scrollTimer = window.setTimeout(scrollFinished(), 5000);
-    }
-);
-
-function scrollFinished() {
-      console.log('Scroll Finished')
-    };
-
-	function scrollStop (callback, refresh = 66) {
-
-// Make sure a valid callback was provided
-if (!callback || typeof callback !== 'function') return;
-
-// Setup scrolling variable
-let isScrolling;
-
-// Listen for scroll events
-window.addEventListener('scroll', function (event) {
-
-	// Clear our timeout throughout the scroll
-	window.clearTimeout(isScrolling);
-
-	// Set a timeout to run after scrolling ends
-	isScrolling = setTimeout(callback, refresh);
-
-}, false);
-
-}
-
-scrollStop(function () {
-console.log('Scrolling has stopped.');
-});
-
 function pauseRecording(){
 	console.log("pauseButton clicked rec.recording=",rec.recording );
 	if (rec.recording){
@@ -307,10 +242,6 @@ function pauseRecording(){
 		pauseButton.innerHTML="Pause";
 
 	}
-}
-
-function server5(){
-	console.log(camera);
 }
 
 function stopRecording() {
@@ -487,22 +418,11 @@ console.log( analyser1.data);
 };
 window.addEventListener( 'resize', onWindowResize );
 }
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
-
 function onWindowResize() {
-	const canvas = document.getElementById("chat3");
-      // look up the size the canvas is being displayed
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
 
-      if (canvas.width !== width || canvas.height !== height) {
-        renderer.setSize(width, height, true);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-      }
+    renderer.setSize( window.innerWidth, window.innerHeight );
 render();
 }
 function render() {
