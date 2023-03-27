@@ -17,8 +17,9 @@ import {BVHLoader} from '/jsm/loaders/BVHLoader.js';
 import * as SkeletonUtils from '/jsm/utils/SkeletonUtils.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
-let camera, scene, renderer;
+let camera, scene, clock, renderer;
 let skeletonHelper;
+
 init();
 render();
 function init() {
@@ -26,6 +27,8 @@ var startButton = document.getElementById( 'startButtonId' );
 var resetButton = document.getElementById( 'resetButtonId' );
 var playtrack = document.getElementById( 'playtrack' );
 const container = document.getElementById("chat3");
+clock = new THREE.Clock();
+
 
 renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
 renderer.setClearColor( 0x000000, 0 );
@@ -267,6 +270,8 @@ window.addEventListener('scroll',(event) => {
     console.log('Scrolling...');
 	if (scrollTimer != -1)
         clearTimeout(scrollTimer);
+		const t = clock.getElapsedTime();
+		skeletonHelper.bones[4].rotation.x = Math.sin( t ) * -40.005;
 
       scrollTimer = window.setTimeout(scrollFinished(), 5000);
     }
@@ -278,11 +283,15 @@ function scrollFinished() {
 
 	function scrollStop (callback, refresh = 66) {
 
+		
+
 // Make sure a valid callback was provided
 if (!callback || typeof callback !== 'function') return;
 
 // Setup scrolling variable
 let isScrolling;
+
+
 
 // Listen for scroll events
 window.addEventListener('scroll', function (event) {
@@ -299,6 +308,7 @@ window.addEventListener('scroll', function (event) {
 
 scrollStop(function () {
 console.log('Scrolling has stopped.');
+skeletonHelper.bones[4].rotation.x = 0;
 });
 
 function pauseRecording(){
