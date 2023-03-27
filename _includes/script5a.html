@@ -14,8 +14,11 @@ import { OrbitControls } from "/js/OrbitControls.js";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import {BVHLoader} from '/jsm/loaders/BVHLoader.js';
+import * as SkeletonUtils from '/jsm/utils/SkeletonUtils.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+
 let camera, scene, renderer;
+let skeletonHelper;
 init();
 render();
 function init() {
@@ -70,6 +73,11 @@ const loader = new GLTFLoader(loadingManager).setPath( '/assets/glb/' );
 loader.load( '123a.glb', function ( gltf ) {
 gltf.scene.scale.set( 1, 1, 1 );
 const mesh = gltf.scene.children[ 0 ];
+skeletonHelper = new THREE.SkeletonHelper(mesh);
+        //skeletonHelper.visible = guiParams.showSkeleton;s
+        scene.add(skeletonHelper);
+		skeletonHelper.visible = false;
+		console.log( Array.isArray( skeleton ) ? skeleton : skeleton.bones);
 scene.add( mesh );
 mesh.scale.set(1,1,1);
 const head = mesh.getObjectByName( 'will' );
