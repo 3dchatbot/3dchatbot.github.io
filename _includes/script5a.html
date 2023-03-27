@@ -77,7 +77,6 @@ skeletonHelper = new THREE.SkeletonHelper(mesh);
         //skeletonHelper.visible = guiParams.showSkeleton;s
         scene.add(skeletonHelper);
 		skeletonHelper.visible = false;
-		console.log( Array.isArray( skeleton ) ? skeleton : skeleton.bones);
 scene.add( mesh );
 mesh.scale.set(1,1,1);
 const head = mesh.getObjectByName( 'will' );
