@@ -132,7 +132,8 @@ setTimeout(function(){head.morphTargetInfluences[1] = 0;}, 500);
 document.getElementById ("slider" ).addEventListener( "input", function (e) {
 
 //mesh.rotation.y = THREE.MathUtils.degToRad( e.target.value );
-mesh.rotation.y = e.target.value;
+mesh.rotation.y = e.target.value / 58;
+console.log(mesh.rotation);
 render();
 
 } );
