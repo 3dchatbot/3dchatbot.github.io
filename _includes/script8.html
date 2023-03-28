@@ -276,33 +276,26 @@ window.addEventListener('scroll',(event) => {
 	if (scrollTimer != -1)
         clearTimeout(scrollTimer);
 		const t = clock.getElapsedTime();
-		skeletonHelper.bones[18].rotation.x = Math.sin( t ) * -10.005;
-		//skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;
-		
-		if(skeletonHelper.bones[18].rotation.x = -2.8845221741125893){
+		skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
+		skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;
+			
+		if(skeletonHelper.bones[18].rotation.x = -8.476002064288632){
 			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
-		}else{
-			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * -10.005;	
 		}
 
-		if(skeletonHelper.bones[18].rotation.x = 3.0045){
-			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * -10.005;	
-		}else{
-			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;	
+		if(skeletonHelper.bones[18].rotation.x = -2.8845221741125893){
+			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * -10.005;
 		}
 
-		if(skeletonHelper.bones[3].rotation.x >= 3.0045){
+
+		if(skeletonHelper.bones[3].rotation.x = 2.8845221741125893){
 			skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;
-		}else{
-			skeletonHelper.bones[3].rotation.x = Math.sin( t ) * -10.005;	
 		}
 
-		if(skeletonHelper.bones[3].rotation.x <= -6.0045){
+		if(skeletonHelper.bones[3].rotation.x = 8.11028946105655){
 			skeletonHelper.bones[3].rotation.x = Math.sin( t ) * -10.005;
-		}else{
-			skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;	
 		}
-	/*	*/
+	
 		skeletonHelper.bones[74].rotation.y = Math.sin( t ) * -10.005;
 		skeletonHelper.bones[102].rotation.y = Math.sin( t ) * -10.005;
 
