@@ -81,8 +81,11 @@ skeletonHelper = new THREE.SkeletonHelper(mesh);
         scene.add(skeletonHelper);
 		skeletonHelper.visible = false;
 		console.log(skeletonHelper.bones)
-		skeletonHelper.bones[102].rotation.z = 76.8156;
+		var rightarm = skeletonHelper.bones[102];
+		rightarm.rotation.z = 76.8156;
+		var rightlegupper = skeletonHelper.bones[18]
 		skeletonHelper.bones[74].rotation.z = -76.8156;
+		rightlegupper.rotation.x = -3.0006409159284159933;
 		//skeletonHelper.bones[102].rotation.y = 0.014726;
 		//skeletonHelper.bones[102].rotation.x = 0.012604;
 scene.add( mesh );
@@ -271,7 +274,8 @@ window.addEventListener('scroll',(event) => {
 	if (scrollTimer != -1)
         clearTimeout(scrollTimer);
 		const t = clock.getElapsedTime();
-		skeletonHelper.bones[4].rotation.x = Math.sin( t ) * -40.005;
+		skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
+		skeletonHelper.bones[3].rotation.x = Math.sin( t ) * -10.005;
 
       scrollTimer = window.setTimeout(scrollFinished(), 5000);
     }
@@ -308,7 +312,8 @@ window.addEventListener('scroll', function (event) {
 
 scrollStop(function () {
 console.log('Scrolling has stopped.');
-skeletonHelper.bones[4].rotation.x = 0;
+skeletonHelper.bones[18].rotation.x = -3.0006409159284159933;
+skeletonHelper.bones[3].rotation.x = 3.0006409159284159933;
 });
 
 function pauseRecording(){
