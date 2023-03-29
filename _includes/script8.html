@@ -39,12 +39,18 @@ renderer.toneMappingExposure = 1;
 renderer.outputEncoding = THREE.sRGBEncoding;
 container.appendChild( renderer.domElement );
 //renderer.setSize( window.innerWidth, window.innerHeight );
-camera = new THREE.PerspectiveCamera( 48, container.clientWidth /  container.clientHeight, 0.1, 10000);
-
+//camera = new THREE.PerspectiveCamera( 40, container.clientWidth /  container.clientHeight, 0.5, 100000);
+//camera.rotation.set(90,0,0); 
 
 //camera = new THREE.PerspectiveCamera(50, container.innerWidth/container.innerHeight, 0.1, 1000 ); // Specify camera type like this
-camera.position.set(0.22,0.36,-4); // Set position like this
+//camera.position.set(-0.201108,-5.52579,0.998309); // Set position like this
 //camera.lookAt((0,0,0)); 
+//camera.position.set(-0.201108,-5.52579,0.998309);
+
+camera = new THREE.PerspectiveCamera(45, container.innerWidth / container.innerHeight, 0.1, 100000);
+  //camera.position.set(0, 30, 160);
+  camera.position.set(-0.201108,-3.52579,0.998309);
+
 //camera = new THREE.PerspectiveCamera();
 
 //camera = new THREE.PerspectiveCamera();
@@ -73,7 +79,7 @@ loadingScreen.addEventListener( 'transitionend', onTransitionEnd );
 
 } );
 const loader = new GLTFLoader(loadingManager).setPath( '/assets/glb/' );
-loader.load( '123a.glb', function ( gltf ) {
+loader.load( 'a62.glb', function ( gltf ) {
 gltf.scene.scale.set( 1, 1, 1 );
 const mesh = gltf.scene.children[ 0 ];
 skeletonHelper = new THREE.SkeletonHelper(mesh);
@@ -91,7 +97,7 @@ skeletonHelper = new THREE.SkeletonHelper(mesh);
 		//skeletonHelper.bones[102].rotation.y = 0.014726;
 		//skeletonHelper.bones[102].rotation.x = 0.012604;
 scene.add( mesh );
-mesh.scale.set(1,1,1);
+mesh.scale.set(0.005,0.005,0.005);
 const head = mesh.getObjectByName( 'will' );
 var mixer = new THREE.AnimationMixer( head );
 var gui = new dat.GUI();
@@ -276,15 +282,15 @@ window.addEventListener('scroll',(event) => {
 	if (scrollTimer != -1)
         clearTimeout(scrollTimer);
 		const t = clock.getElapsedTime();
-		skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
-		skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;
+		//skeletonHelper.bones[18].rotation.x = -2;
+		skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 3.000;
 			
-		if(skeletonHelper.bones[18].rotation.x = -8.476002064288632){
-			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
+		if(skeletonHelper.bones[18].rotation.x >= -8.476002064288632){
+			skeletonHelper.bones[18].rotation.x = -2;
 		}
 
-		if(skeletonHelper.bones[18].rotation.x = -2.8845221741125893){
-			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * -10.005;
+		if(skeletonHelper.bones[18].rotation.x <= -2.8845221741125893){
+			skeletonHelper.bones[18].rotation.x = -8;
 		}
 
 
