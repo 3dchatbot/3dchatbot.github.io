@@ -85,13 +85,17 @@ skeletonHelper = new THREE.SkeletonHelper(mesh);
 		var rightarm = skeletonHelper.bones[102];
 		rightarm.rotation.z = 76.8156;
 		rightarm.rotation.y = 0;
-		rightlegupper = skeletonHelper.bones[18];
 		skeletonHelper.bones[74].rotation.y = 0;
 		skeletonHelper.bones[74].rotation.z = -76.8156;
-		rightlegupper.rotation.x = -3.0006409159284159933;
-
+		skeletonHelper.bones[18].rotation.set(3.0006409159284159933, 3.000, 0, "XYZ");
+		skeletonHelper.bones[3].rotation.set(3.0006409159284159933, 3.000, 0, "XYZ");
+		skeletonHelper.bones[18].rotation.x = 0;
+		skeletonHelper.bones[3].rotation.x = 0;
 		skel1_3_rot_x = skel1[3].rotation.x;
 		skel1_18_rot_x = skel1[18].rotation.x; 
+		
+
+
 		
 scene.add( mesh );
 mesh.scale.set(1,1,1);
@@ -299,8 +303,6 @@ window.addEventListener('scroll', function (event) {
 }
 
 scrollStop(function () {
-	clearInterval(animate);
-	cancelAnimationFrame( walking );
 	stopanimate();
 console.log('Scrolling has stopped.');
 console.log(skeletonHelper.bones[18].rotation.x);
@@ -539,8 +541,11 @@ function stopanimate(event) {
 	/*	for ( var i = 0; i < skeletonHelper.bones.length; i ++ ) {
 			skeletonHelper.bones[ i ].rotation.z = Math.sin( time ) * 2 / skeletonHelper.bones.length;			
 		}	*/	
-		skel1[18].rotation.x = 0;
-		skel1[3].rotation.x = 0;
+
+		skeletonHelper.bones[18].rotation.set(3.0006409159284159933, 3.000, 0, "XYZ");
+		skeletonHelper.bones[3].rotation.set(3.0006409159284159933, 3.000, 0, "XYZ");
+		skeletonHelper.bones[18].rotation.x = 0;
+		skeletonHelper.bones[3].rotation.x = 0;
 	//	skel1[18].rotation.x = 0*Math.cos( time*2.05 );
 	//	skeletonHelper.bones[74].rotation.y = 0.30*Math.sin( time*0.35 );
 	//	skeletonHelper.bones[102].rotation.y = 0.30*Math.sin( time*0.35 );
