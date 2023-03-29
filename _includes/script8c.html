@@ -299,13 +299,14 @@ window.addEventListener('scroll', function (event) {
 }
 
 scrollStop(function () {
-	//clearInterval(animate);
+	clearInterval(animate);
 	cancelAnimationFrame( walking );
-//console.log('Scrolling has stopped.');
-//console.log(skeletonHelper.bones[18].rotation.x);
-//console.log(skeletonHelper.bones[3].rotation.x);
-//skeletonHelper.bones[18].rotation.x = -3.0006409159284159933;
-//skeletonHelper.bones[3].rotation.x = 3.0006409159284159933;
+	stopanimate();
+console.log('Scrolling has stopped.');
+console.log(skeletonHelper.bones[18].rotation.x);
+console.log(skeletonHelper.bones[3].rotation.x);
+skeletonHelper.bones[18].rotation.x = -3.0006409159284159933;
+skeletonHelper.bones[3].rotation.x = 3.0006409159284159933;
 //skeletonHelper.bones[74].rotation.y = 0;
 //skeletonHelper.bones[102].rotation.y = 0;
 });
@@ -525,15 +526,32 @@ function animate(event) {
 	skel1[3].rotation.x = 0.60*Math.cos( time*2.05 );
 	
 	//skeletonHelper.update();
-	renderer.render( scene, camera, skel1 );
+	//renderer.render( scene, camera, skel1 );
 }
 
 
 function stopanimate(event) {
 	
 	cancelAnimationFrame( walking );
-	//skeletonHelper.update();
-	renderer.render( scene, camera );
+	requestAnimationFrame( stopanimate );
+	var time = Date.now() * 0.001;			
+        			//Knochen bewegen	
+	/*	for ( var i = 0; i < skeletonHelper.bones.length; i ++ ) {
+			skeletonHelper.bones[ i ].rotation.z = Math.sin( time ) * 2 / skeletonHelper.bones.length;			
+		}	*/	
+		skel1[18].rotation.x = 0;
+		skel1[3].rotation.x = 0;
+	//	skel1[18].rotation.x = 0*Math.cos( time*2.05 );
+	//	skeletonHelper.bones[74].rotation.y = 0.30*Math.sin( time*0.35 );
+	//	skeletonHelper.bones[102].rotation.y = 0.30*Math.sin( time*0.35 );
+	//skel1[3].rotation.x = 0*Math.cos( time*2.05 );
+	
+	//	skeletonHelper.bones[3].position.x += 0.4*Math.cos( time*0.4 );
+	//	skeletonHelper.bones[3].position.z += 0.2*Math.sin( time*0.4 );	
+	//skel1[18].rotation.x = -0.60*Math.cos( time*2.05 );
+	//	skeletonHelper.bones[74].rotation.y = 0.30*Math.sin( time*0.35 );
+	//	skeletonHelper.bones[102].rotation.y = 0.30*Math.sin( time*0.35 );
+	//skel1[3].rotation.x = 0.60*Math.cos( time*2.05 );
 }
 
 
