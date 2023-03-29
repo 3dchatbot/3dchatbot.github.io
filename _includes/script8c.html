@@ -17,9 +17,9 @@ import {BVHLoader} from '/jsm/loaders/BVHLoader.js';
 import * as SkeletonUtils from '/jsm/utils/SkeletonUtils.js';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
-let camera, scene, clock, renderer;
-let skeletonHelper;
-
+let camera, scene, clock, renderer, walking;
+let skeletonHelper, rightlegupper, skel1;
+let skel1_3_rot_x, skel1_18_rot_x;
 init();
 render();
 function init() {
@@ -81,62 +81,27 @@ skeletonHelper = new THREE.SkeletonHelper(mesh);
         scene.add(skeletonHelper);
 		skeletonHelper.visible = false;
 		console.log(skeletonHelper.bones)
+		skel1 = skeletonHelper.bones;
 		var rightarm = skeletonHelper.bones[102];
 		rightarm.rotation.z = 76.8156;
 		rightarm.rotation.y = 0;
-		var rightlegupper = skeletonHelper.bones[18];
+		rightlegupper = skeletonHelper.bones[18];
 		skeletonHelper.bones[74].rotation.y = 0;
 		skeletonHelper.bones[74].rotation.z = -76.8156;
 		rightlegupper.rotation.x = -3.0006409159284159933;
-		//skeletonHelper.bones[102].rotation.y = 0.014726;
-		//skeletonHelper.bones[102].rotation.x = 0.012604;
+
+		skel1_3_rot_x = skel1[3].rotation.x;
+		skel1_18_rot_x = skel1[18].rotation.x; 
+		
 scene.add( mesh );
 mesh.scale.set(1,1,1);
 const head = mesh.getObjectByName( 'will' );
 var mixer = new THREE.AnimationMixer( head );
-var gui = new dat.GUI();
+
 const control = {
-OpenMouth: 0,
-Blink: 0,
-Eyebrows: 0,
-Smile: 0,
-LookLeft: 0,
-LookRight: 0,
-Lookup: 0,
-Lookdown: 0
 };
-gui.add(control, 'OpenMouth', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[0] = value;
-});
-gui.add(control, 'Blink', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[1] = value;
-});
-gui.add(control, 'Eyebrows', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[2] = value;
-});
-gui.add(control, 'Smile', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[3] = value;
-});
-gui.add(control, 'LookLeft', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[4] = value;
-});
-gui.add(control, 'LookRight', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[5] = value;
-});
-gui.add(control, 'Lookup', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[6] = value;
-});
-gui.add(control, 'Lookdown', 0,1).step(0.01).listen().onChange(function(value){
-head.morphTargetInfluences[7] = value;
-});
-startButton.onclick = function StartAnimation() {
-setTimeout(function() {head.morphTargetInfluences[0] = 1;}, 500);
-setTimeout(function() {head.morphTargetInfluences[0] = 0;}, 1000);
-}
-resetButton.onclick = function ResetParameters() {
-head.morphTargetInfluences[1] = 1;
-setTimeout(function(){head.morphTargetInfluences[1] = 0;}, 500);
-}
+
+
 document.getElementById ("slider" ).addEventListener( "input", function (e) {
 
 //mesh.rotation.y = THREE.MathUtils.degToRad( e.target.value );
@@ -146,7 +111,7 @@ render();
 
 } );
 
-gui.close();
+
 render();
 });
 } );
@@ -276,9 +241,10 @@ window.addEventListener('scroll',(event) => {
 	if (scrollTimer != -1)
         clearTimeout(scrollTimer);
 		const t = clock.getElapsedTime();
-		skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
-		skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;
-			
+		animate();
+//		skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
+//		skeletonHelper.bones[3].rotation.x = Math.sin( t ) * 10.005;
+		/*	
 		if(skeletonHelper.bones[18].rotation.x = -8.476002064288632){
 			skeletonHelper.bones[18].rotation.x = Math.sin( t ) * 10.005;
 		}
@@ -298,7 +264,7 @@ window.addEventListener('scroll',(event) => {
 	
 		skeletonHelper.bones[74].rotation.y = Math.sin( t ) * -10.005;
 		skeletonHelper.bones[102].rotation.y = Math.sin( t ) * -10.005;
-
+*/
       scrollTimer = window.setTimeout(scrollFinished(), 5000);
     }
 );
@@ -333,13 +299,15 @@ window.addEventListener('scroll', function (event) {
 }
 
 scrollStop(function () {
-console.log('Scrolling has stopped.');
-console.log(skeletonHelper.bones[18].rotation.x);
-console.log(skeletonHelper.bones[3].rotation.x);
-skeletonHelper.bones[18].rotation.x = -3.0006409159284159933;
-skeletonHelper.bones[3].rotation.x = 3.0006409159284159933;
-skeletonHelper.bones[74].rotation.y = 0;
-skeletonHelper.bones[102].rotation.y = 0;
+	//clearInterval(animate);
+	cancelAnimationFrame( walking );
+//console.log('Scrolling has stopped.');
+//console.log(skeletonHelper.bones[18].rotation.x);
+//console.log(skeletonHelper.bones[3].rotation.x);
+//skeletonHelper.bones[18].rotation.x = -3.0006409159284159933;
+//skeletonHelper.bones[3].rotation.x = 3.0006409159284159933;
+//skeletonHelper.bones[74].rotation.y = 0;
+//skeletonHelper.bones[102].rotation.y = 0;
 });
 
 function pauseRecording(){
@@ -538,6 +506,36 @@ const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
 }
+
+
+function animate(event) {
+	walking = requestAnimationFrame( animate );
+	var time = Date.now() * 0.001;			
+        			//Knochen bewegen	
+	/*	for ( var i = 0; i < skeletonHelper.bones.length; i ++ ) {
+			skeletonHelper.bones[ i ].rotation.z = Math.sin( time ) * 2 / skeletonHelper.bones.length;			
+		}	*/	
+		skel1[18].rotation.set(3.0006409159284159933, 3.000, 0, "XYZ");
+		skel1[3].rotation.set(3.0006409159284159933, 3.000, 0, "XYZ");
+	//	skeletonHelper.bones[3].position.x += 0.4*Math.cos( time*0.4 );
+	//	skeletonHelper.bones[3].position.z += 0.2*Math.sin( time*0.4 );	
+	skel1[18].rotation.x = -0.60*Math.cos( time*2.05 );
+	//	skeletonHelper.bones[74].rotation.y = 0.30*Math.sin( time*0.35 );
+	//	skeletonHelper.bones[102].rotation.y = 0.30*Math.sin( time*0.35 );
+	skel1[3].rotation.x = 0.60*Math.cos( time*2.05 );
+	
+	//skeletonHelper.update();
+	renderer.render( scene, camera, skel1 );
+}
+
+
+function stopanimate(event) {
+	
+	cancelAnimationFrame( walking );
+	//skeletonHelper.update();
+	renderer.render( scene, camera );
+}
+
 
 function onWindowResize() {
 	const canvas = document.getElementById("chat3");
